@@ -1,0 +1,90 @@
+CREATE TABLE IF NOT EXISTS TypePaiement (
+idTypePaiement INT NOT NULL,
+nomPaiement VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypePaiement)
+);
+
+CREATE TABLE IF NOT EXISTS Contrat (
+idContrat INT NOT NULL,
+idClient INT NOT NULL, 
+idVehicule INT NOT NULL,
+dateDeDepart DATETIME NOT NULL,
+dateDeRetour DATETIME NOT NULL,
+assurance VARCHAR(45) NOT NULL,
+forfaitUsure VARCHAR(45) NOT NULL,
+PRIMARY KEY (idContrat)
+);
+
+CREATE TABLE IF NOT EXISTS Employe (
+idEmploye INT NOT NULL,
+prenom VARCHAR(45) NOT NULL,
+nom VARCHAR(45) NOT NULL,
+telephone VARCHAR(45) NOT NULL,
+adresse VARCHAR(45) NOT NULL,
+PRIMARY KEY (idEmploye)
+);
+
+CREATE TABLE IF NOT EXISTS TypeUtilisateur (
+idTypeUtilisateur INT NOT NULL,
+nomTypeUtilisateur VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypeUtilisateur)
+);
+
+CREATE TABLE IF NOT EXISTS Utilisateur (
+idUtilisateur INT NOT NULL,
+idEmploye INT NOT NULL,
+nomUtilisateur VARCHAR(45) NOT NULL,
+motDePasse VARCHAR(45) NOT NULL,
+idTypeUtilisateur INT NOT NULL,
+PRIMARY KEY (idUtilisateur),
+FOREIGN KEY (idEmploye) REFERENCES Employe (idEmploye),
+FOREIGN KEY (idTypeUtilisateur) REFERENCES TypeUtilisateur (idTypeUtilisateur)
+);
+
+
+CREATE TABLE IF NOT EXISTS CouleurVehicule (
+idCouleurVehicule INT NOT NULL,
+nomCouleur VARCHAR(45) NOT NULL,
+PRIMARY KEY (idCouleur)
+);
+
+CREATE TABLE IF NOT EXISTS MarqueVehicule (
+idMarqueVehicule INT NOT NULL,
+nomMarque VARCHAR(45) NOT NULL,
+PRIMARY KEY (idMarque)
+);
+
+CREATE TABLE IF NOT EXISTS TypeVehicule (
+idTypeVehicule INT NOT NULL,
+nomType VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypeVehicule)
+);
+
+CREATE TABLE IF NOT EXISTS Vehicule (
+idVehicule INT NOT NULL,
+idMarqueVehicule INT NOT NULL,
+idTypeVehicule INT NOT NULL,
+idCouleurVehicule INT NOT NULL,
+PRIMARY KEY (idVehicule),
+FOREIGN KEY (idMarqueVehicule) REFERENCES MarqueVehicule (idMarqueVehicule),
+FOREIGN KEY (idTypeVehicule) REFERENCES TypeVehicule (idTypeVehicule),
+FOREIGN KEY (idCouleurVehicule) REFERENCES CouleurVehicule (idCouleurVehicule)
+);
+
+CREATE TABLE IF NOT EXISTS TypePermis (
+idTypePermis INT NOT NULL,
+nomType VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypePermis)
+);
+
+CREATE TABLE IF NOT EXISTS Client (
+idClient INT NOT NULL,
+prenom VARCHAR(45) NOT NULL,
+nom VARCHAR(45) NOT NULL,
+dateDeNaissance DATE NOT NULL,
+telephone VARCHAR(45) NOT NULL,
+adresse VARCHAR(45) NOT NULL,
+    idTypePermis INT NOT NULL,
+PRIMARY KEY (idClient),
+FOREIGN KEY (idTypePermis) REFERENCES TypePermis (idTypePermis)
+);
