@@ -1,4 +1,4 @@
-package locosys.View.Admin;
+package locosys.views;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
