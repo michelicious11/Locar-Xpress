@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 public class Employe {
 	private int employeID; 
-	private String prenom, nom, telephone, adresse;
+	private String prenom, nom, telephone, courriel;
 
 	public Employe(int employeID, String prenom, String nom, String telephone, String adresse) {
 		this.employeID = employeID;
 		this.prenom = prenom;
 		this.nom = nom; 
 		this.telephone = telephone;
-		this.adresse = adresse; 
+		this.courriel = adresse; 
 	}
 }

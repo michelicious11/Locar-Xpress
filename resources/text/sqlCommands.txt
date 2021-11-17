@@ -6,13 +6,16 @@ PRIMARY KEY (idTypePaiement)
 
 CREATE TABLE IF NOT EXISTS Contrat (
 idContrat INT NOT NULL,
-idClient INT NOT NULL, 
+idClient INT NOT NULL,
 idVehicule INT NOT NULL,
 dateDeDepart DATETIME NOT NULL,
 dateDeRetour DATETIME NOT NULL,
-assurance VARCHAR(45) NOT NULL,
-forfaitUsure VARCHAR(45) NOT NULL,
-PRIMARY KEY (idContrat)
+assurance BINARY NOT NULL,
+forfaitUsure BINARY NOT NULL,
+paiementCredit BINARY NOT NULL,
+PRIMARY KEY (idContrat),
+FOREIGN KEY (idClient) REFERENCES Client (idClient),
+FOREIGN KEY (idVehicule) REFERENCES Vehicule (idVehicule)
 );
 
 CREATE TABLE IF NOT EXISTS Employe (
@@ -45,13 +48,13 @@ FOREIGN KEY (idTypeUtilisateur) REFERENCES TypeUtilisateur (idTypeUtilisateur)
 CREATE TABLE IF NOT EXISTS CouleurVehicule (
 idCouleurVehicule INT NOT NULL,
 nomCouleur VARCHAR(45) NOT NULL,
-PRIMARY KEY (idCouleur)
+PRIMARY KEY (idCouleurVehicule)
 );
 
 CREATE TABLE IF NOT EXISTS MarqueVehicule (
 idMarqueVehicule INT NOT NULL,
 nomMarque VARCHAR(45) NOT NULL,
-PRIMARY KEY (idMarque)
+PRIMARY KEY (idMarqueVehicule)
 );
 
 CREATE TABLE IF NOT EXISTS TypeVehicule (
@@ -77,6 +80,13 @@ nomType VARCHAR(45) NOT NULL,
 PRIMARY KEY (idTypePermis)
 );
 
+CREATE TABLE IF NOT EXISTS Permis (
+idPermis INT NOT NULL,
+idTypePermis INT NOT NULL,
+PRIMARY KEY (idPermis),
+FOREIGN KEY (idTypePermis) REFERENCES TypePermis (idTypePermis)
+);
+
 CREATE TABLE IF NOT EXISTS Client (
 idClient INT NOT NULL,
 prenom VARCHAR(45) NOT NULL,
@@ -84,7 +94,31 @@ nom VARCHAR(45) NOT NULL,
 dateDeNaissance DATE NOT NULL,
 telephone VARCHAR(45) NOT NULL,
 adresse VARCHAR(45) NOT NULL,
-    idTypePermis INT NOT NULL,
+idPermis INT NOT NULL,
 PRIMARY KEY (idClient),
-FOREIGN KEY (idTypePermis) REFERENCES TypePermis (idTypePermis)
+FOREIGN KEY (idPermis) REFERENCES Permis (idPermis)
+);
+
+
+CREATE TABLE IF NOT EXISTS Inspection (
+idInspection INT NOT NULL,
+idVehicule INT NOT NULL,
+idEmploye INT NOT NULL,
+dateInspection DATE NOT NULL,
+essence FLOAT NOT NULL,
+montantAccident FLOAT NOT NULL,
+PRIMARY KEY (idInspection),
+FOREIGN KEY (idVehicule) REFERENCES Vehicule (idVehicule),
+FOREIGN KEY (idEmploye) REFERENCES Employe (idEmploye)
+);
+
+
+CREATE TABLE IF NOT EXISTS Facture (
+idFacture INT NOT NULL,
+idContrat INT NOT NULL,
+idInspection INT NOT NULL,
+dateFacture DATE NOT NULL,
+PRIMARY KEY (idFacture),
+FOREIGN KEY (idContrat) REFERENCES MarqueVehicule (idMarqueVehicule),
+FOREIGN KEY (idInspection) REFERENCES TypeVehicule (idTypeVehicule)
 );

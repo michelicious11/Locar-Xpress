@@ -7,7 +7,8 @@ public class Inspection {
 	private ContratLocation contrat; 
 	private Vehicules vehicule; 
 	private LocalDateTime dateInspection; 
-	private double montantAccident;
+	private double essenceLitres, montantAccident;
+
 	private Employe employe;
  
 	public Inspection(ContratLocation contrat, double montantAccident, LocalDateTime dateInspection, Employe employe) {
@@ -57,5 +58,12 @@ public class Inspection {
 
 	public void setEmployeId(Employe employe) {
 		this.employe = employe;
+	}
+	public double getEssenceLitres() {
+		return essenceLitres;
+	}
+
+	public void setEssenceLitres(double essenceLitres) {
+		this.essenceLitres = essenceLitres;
 	}
 }

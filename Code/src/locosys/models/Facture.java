@@ -2,7 +2,7 @@ package locosys.models;
 
 import java.time.LocalDateTime;
 
-public class Facturation {
+public class Facture {
 	private Inspection inspection;
 	private ContratLocation contrat; 
 	private Client client;
@@ -17,7 +17,7 @@ public class Facturation {
 	private final double fraisTaxes = 0.15;
 	private final double fraisEssence = 1.41; 
 	
-	public Facturation(Inspection inspection) {
+	public Facture(Inspection inspection) {
 		this.inspection = inspection;
 		this.contrat = inspection.getContrat(); 
 		this.client = inspection.getContrat().getClient();
