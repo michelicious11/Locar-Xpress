@@ -1,0 +1,82 @@
+Column,Value (1),Value (2),Value (3),Value (4),Value (5),Value (6),Value (7),Value (8),Value (9),Value (10),Value (11),Value (12),Value (13)
+type,table,table,table,table,table,table,table,table,table,table,table,table,table
+name,Contrat,TypeUtilisateur,Utilisateur,CouleurVehicule,MarqueVehicule,TypeVehicule,Vehicule,TypePermis,Client,Permis,Inspection,Facture,Employe
+tbl_name,Contrat,TypeUtilisateur,Utilisateur,CouleurVehicule,MarqueVehicule,TypeVehicule,Vehicule,TypePermis,Client,Permis,Inspection,Facture,Employe
+rootpage,2,4,5,6,7,8,9,10,11,12,15,16,17
+sql,"CREATE TABLE Contrat (
+idContrat INTEGER NOT NULL,
+idClient INTEGER NOT NULL,
+idVehicule INTEGER NOT NULL,
+dateDeDepart DATETIME NOT NULL,
+dateDeRetour DATETIME NOT NULL,
+assurance VARCHAR(45) NOT NULL,
+forfaitUsure VARCHAR(45) NOT NULL, paiementCredit BINARY,
+PRIMARY KEY (idContrat)
+)","CREATE TABLE TypeUtilisateur (
+idTypeUtilisateur INTEGER NOT NULL,
+nomTypeUtilisateur VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypeUtilisateur)
+)","CREATE TABLE Utilisateur (
+idUtilisateur INTEGER NOT NULL,
+idEmploye INTEGER NOT NULL,
+nomUtilisateur VARCHAR(45) NOT NULL,
+motDePasse VARCHAR(45) NOT NULL,
+idTypeUtilisateur INTEGER NOT NULL,
+PRIMARY KEY (idUtilisateur),
+FOREIGN KEY (idEmploye) REFERENCES Employe (idEmploye),
+FOREIGN KEY (idTypeUtilisateur) REFERENCES TypeUtilisateur (idTypeUtilisateur)
+)","CREATE TABLE CouleurVehicule (
+idCouleurVehicule INTEGER NOT NULL,
+nomCouleur VARCHAR(45) NOT NULL,
+PRIMARY KEY (idCouleurVehicule)
+)","CREATE TABLE MarqueVehicule (
+idMarqueVehicule INTEGER NOT NULL,
+nomMarque VARCHAR(45) NOT NULL,
+PRIMARY KEY (idMarqueVehicule)
+)","CREATE TABLE TypeVehicule (
+idTypeVehicule INTEGER NOT NULL,
+nomType VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypeVehicule)
+)","CREATE TABLE Vehicule (
+idVehicule INTEGER NOT NULL,
+idMarqueVehicule INTEGER NOT NULL,
+idTypeVehicule INTEGER NOT NULL,
+idCouleurVehicule INTEGER NOT NULL,
+PRIMARY KEY (idVehicule),
+FOREIGN KEY (idMarqueVehicule) REFERENCES MarqueVehicule (idMarqueVehicule),
+FOREIGN KEY (idTypeVehicule) REFERENCES TypeVehicule (idTypeVehicule),
+FOREIGN KEY (idCouleurVehicule) REFERENCES CouleurVehicule (idCouleurVehicule)
+)","CREATE TABLE TypePermis (
+idTypePermis INTEGER NOT NULL,
+nomType VARCHAR(45) NOT NULL,
+PRIMARY KEY (idTypePermis)
+)","CREATE TABLE Client (
+idClient INTEGER NOT NULL,
+prenom VARCHAR(45) NOT NULL,
+nom VARCHAR(45) NOT NULL,
+dateDeNaissance DATE NOT NULL,
+telephone VARCHAR(45) NOT NULL,
+adresse VARCHAR(45) NOT NULL,
+    idPermis INTEGER NOT NULL,
+PRIMARY KEY (idClient),
+FOREIGN KEY (idPermis) REFERENCES TypePermis (idTypePermis)
+)","CREATE TABLE Permis(
+    idPermis INTEGER PRIMARY KEY,
+    idTypePermis INTEGER NOT NULL,
+    FOREIGN KEY (idTypePermis) REFERENCES TypePermis (idTypePermis))","CREATE TABLE Inspection (
+	idVehicule INT,
+	idEmploye INT,
+	dateInspection DATE,
+	essence DECIMAL(4,2),
+	montantAccident DECIMAL(6,2)
+)","CREATE TABLE Facture (
+	idContrat INT,
+	idInspection INT,
+	dateInspection DATE
+)","CREATE TABLE ""Employe"" (
+   idEmploye INTEGER PRIMARY KEY,
+   prenom charvar(45) NOT NULL,
+   nom charvar(45) NOT NULL ,
+   telephone charvar(45) NOT NULL,
+   courriel charvar(45) NOT NULL
+)"
