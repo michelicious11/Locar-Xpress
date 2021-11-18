@@ -7,9 +7,12 @@ import locosys.views.AdminPages;
 public class main {
 
 	/**
+	 * Create the database.
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		ConnectionBD.createNewDatabase("locoSys.db");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -20,6 +23,5 @@ public class main {
 				}
 			}
 		});
-	}
-    
+	}    
 }

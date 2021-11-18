@@ -1,0 +1,121 @@
+create table if not EXISTS Contrat
+(
+    idContrat      INTEGER     not null
+        primary key,
+    idClient       INTEGER     not null,
+    idVehicule     INTEGER     not null,
+    dateDeDepart   DATETIME    not null,
+    dateDeRetour   DATETIME    not null,
+    assurance      VARCHAR(45) not null,
+    forfaitUsure   VARCHAR(45) not null,
+    paiementCredit BINARY
+);
+
+create table if not EXISTS CouleurVehicule
+(
+    idCouleurVehicule INTEGER     not null
+        primary key,
+    nomCouleur        VARCHAR(45) not null
+);
+
+create table if not EXISTS Employe
+(
+    idEmploye INTEGER
+        primary key,
+    prenom    charvar(45) not null,
+    nom       charvar(45) not null,
+    telephone charvar(45) not null,
+    courriel  charvar(45) not null
+);
+
+create table if not EXISTS Facture 
+(
+    idContrat      INT,
+    idInspection   INT,
+    dateInspection DATE
+);
+
+create table if not EXISTS Inspection 
+(
+    idVehicule      INT,
+    idEmploye       INT,
+    dateInspection  DATE,
+    essence         DECIMAL(4, 2),
+    montantAccident DECIMAL(6, 2)
+);
+
+create table if not EXISTS MarqueVehicule 
+(
+    idMarqueVehicule INTEGER     not null
+        primary key,
+    nomMarque        VARCHAR(45) not null
+);
+
+create table if not EXISTS TypePermis 
+(
+    idTypePermis INTEGER     not null
+        primary key,
+    nomType      VARCHAR(45) not null
+);
+
+create table if not EXISTS Client 
+(
+    idClient        INTEGER     not null
+        primary key,
+    prenom          VARCHAR(45) not null,
+    nom             VARCHAR(45) not null,
+    dateDeNaissance DATE        not null,
+    telephone       VARCHAR(45) not null,
+    adresse         VARCHAR(45) not null,
+    idPermis        INTEGER     not null
+        references TypePermis
+);
+
+create table if not EXISTS Permis 
+(
+    idPermis     INTEGER
+        primary key,
+    idTypePermis INTEGER not null
+        references TypePermis
+);
+
+create table if not EXISTS TypeUtilisateur
+(
+    idTypeUtilisateur  INTEGER     not null
+        primary key,
+    nomTypeUtilisateur VARCHAR(45) not null
+);
+
+create table if not EXISTS TypeVehicule
+(
+    idTypeVehicule INTEGER     not null
+        primary key,
+    nomType        VARCHAR(45) not null
+);
+
+create table if not EXISTS Utilisateur
+(
+    idUtilisateur     INTEGER     not null
+        primary key,
+    idEmploye         INTEGER     not null
+        references Employe,
+    nomUtilisateur    VARCHAR(45) not null,
+    motDePasse        VARCHAR(45) not null,
+    idTypeUtilisateur INTEGER     not null
+        references TypeUtilisateur
+);
+
+create table if not EXISTS Vehicule
+(
+    idVehicule        INTEGER not null
+        primary key,
+    idMarqueVehicule  INTEGER not null
+        references MarqueVehicule,
+    idTypeVehicule    INTEGER not null
+        references TypeVehicule,
+    idCouleurVehicule INTEGER not null
+        references CouleurVehicule
+);
+
+
+
