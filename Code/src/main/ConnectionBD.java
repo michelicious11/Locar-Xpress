@@ -36,9 +36,18 @@ public class ConnectionBD {
 			e.printStackTrace();   
 		}
 	}
-	
+
 	//fonction qui retourne le fichier sql en string
 	public static String readDB() {
+		
+		String filePath = new File("").getAbsolutePath();
+		System.out.println (filePath);
+
+		//http://stackoverflow.com/questions/2788080/reading-a-text-file-in-java    
+		//http://stackoverflow.com/questions/19874066/how-to-read-text-file-relative-path
+		//BufferedReader reader = new BufferedReader(new FileReader(filePath + "/src/DBTextFiles/Administrator.txt"));
+		
+		
 		String commands;
 		String commandsFinal= ""; 
 		try {
@@ -58,30 +67,12 @@ public class ConnectionBD {
 	//fonction qui utilise les commandes sql en string pour run query
 
 	public static void insertIntoDB() {
-		
+
 		try {
 			Connection conn = DriverManager.getConnection(url);
 			Statement ps = conn.createStatement();
 			ps.executeUpdate(readDB());
 			System.out.println("ca mooorche");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	
-	public static void selectInDB(String fileName) {
-		String sql = "SELECT * FROM TypeVehicule;";
-
-		try (Connection conn = DriverManager.getConnection(url)){
-
-			Statement stmt  = conn.createStatement();
-			ResultSet rs    = stmt.executeQuery(sql);
-
-			while(rs.next()) {
-				System.out.println(rs);        
-			}  	
-			System.out.println("\n\n\nca mooorche");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

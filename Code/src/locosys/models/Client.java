@@ -8,9 +8,8 @@ public class Client {
 	private LocalDateTime dateNaissance;
 
 	
-	public Client(int clientID, String prenom, String nom, String telephone,
-					Permis permis, String adresse, LocalDateTime dateNaissance) {
-		this.clientID = clientID; 
+	public Client(int clientID, String prenom, String nom, LocalDateTime dateNaissance, String telephone,
+					String adresse, Permis permis) {
 		this.typePermis = permis.getTypePermis();
 		this.prenom = prenom; 
 		this.nom = nom; 
