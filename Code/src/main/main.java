@@ -12,16 +12,23 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		
-		ConnectionBD.createNewDatabase("locoSys.db");
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AppLogin window = new AppLogin();
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}    
+		ConnectionBD.createNewDatabase("locosys.db");
+		//System.out.println(ConnectionBD.readDB());;
+		//ConnectionBD.insertIntoDB();
+		ConnectionBD.selectInDB("locosys.db");
+		
+	}
+		
+		//ConnectionBD.createNewDatabase("locoSys.db");
+		//EventQueue.invokeLater(new Runnable() {
+			//public void run() {
+			//	try {
+			//		AppLogin window = new AppLogin();
+			//		window.getFrame().setVisible(true);
+			//	} catch (Exception e) {
+			//		e.printStackTrace();
+			//	}
+			//}
+		//});
+	//}    
 }
