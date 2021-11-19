@@ -17,7 +17,7 @@ public class ConnectionBD {
 	private String fileName;
 	private String commands; 
 	private static String url = "jdbc:sqlite:";
-	static String url2 = "C:\\Users\\mmoua\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+	static String url2 = "..\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
 	//private static Connection conn;
 	//private static Statement stmt; 
 
