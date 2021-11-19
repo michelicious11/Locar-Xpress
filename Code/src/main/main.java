@@ -11,7 +11,8 @@ public class main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		System.out.println(ConnectionBD.readDB());
+		
+		//System.out.println(ConnectionBD.readDB());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
