@@ -2,10 +2,7 @@ package main;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.io.*;
@@ -17,9 +14,21 @@ public class ConnectionBD {
 	private String fileName;
 	private String commands; 
 	private static String url = "jdbc:sqlite:";
-	static String url2 = "C:\\Users\\mmoua\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+	//relative path pour que ca fonctionne sur la plupart des ordis (a voir si on peut faire mieux)
+	private static String url2 = ".\\..\\..\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+	private static String url3 = ".\\..\\..\\Documents\\locar-xpress\\";
 	//private static Connection conn;
 	//private static Statement stmt; 
+
+	public static String getUrl3() {
+		return url3;
+	}
+
+
+	public static void setUrl3(String url3) {
+		ConnectionBD.url3 = url3;
+	}
+
 
 	/**
 	 * Connects to the database (creates one in the project if it doesnt exist)
@@ -36,6 +45,7 @@ public class ConnectionBD {
 			e.printStackTrace();   
 		}
 	}
+
 
 	//fonction qui retourne le fichier sql en string
 	public static String readDB() {
@@ -70,11 +80,47 @@ public class ConnectionBD {
 
 		try {
 			Connection conn = DriverManager.getConnection(url);
-			Statement ps = conn.createStatement();
-			ps.executeUpdate(readDB());
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(readDB());
 			System.out.println("ca mooorche");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * Getters a
+	 * */
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getCommands() {
+		return commands;
+	}
+
+	public void setCommands(String commands) {
+		this.commands = commands;
+	}
+
+	public static String getUrl() {
+		return url;
+	}
+
+	public static void setUrl(String url) {
+		ConnectionBD.url = url;
+	}
+
+	public static String getUrl2() {
+		return url2;
+	}
+
+	public static void setUrl2(String url2) {
+		ConnectionBD.url2 = url2;
+	}
+
 }
