@@ -314,6 +314,7 @@ public class SuperuserPages extends JFrame {
 		 * 
 		 */
 		JPanel gestionTab = new JPanel();
+		gestionTab.setVisible(false);
 		gestionTab.setBounds(0, 0, 579, 399);
 		gestionTab.setBackground(new Color(112,146,190));
 		pnlCards.add(gestionTab);
