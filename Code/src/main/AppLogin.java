@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import locosys.views.AdminPages;
+import locosys.views.SuperuserPages;
+import locosys.views.UserPages;
 
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
@@ -39,9 +41,10 @@ public class AppLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setPreferredSize(new Dimension(760, 345));
+		frame.setPreferredSize(new Dimension(900, 400));
 		frame.setBounds(100, 100, 760, 367);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 
 		JPanel coteGauche = new JPanel();
@@ -65,7 +68,7 @@ public class AppLogin {
 		coteDroit.add(passwordLbl);
 
 		JLabel logoLbl = new JLabel(" ");
-		logoLbl.setIcon(new ImageIcon(AdminPages.class.getResource("/images/logoXSmall.png")));
+		logoLbl.setIcon(new ImageIcon(UserPages.class.getResource("/images/logoXSmall.png")));
 		logoLbl.setBounds(48, 0, 129, 100);
 		coteDroit.add(logoLbl);
 
@@ -97,14 +100,21 @@ public class AppLogin {
 			public void mouseClicked(MouseEvent e) {
 				switch(AppLoginController.getTypeUtilisateur(usernameField.getText(), passwordField.getText())) {
 				case 1:
-					AdminPages adminPages = new AdminPages(); //pour l'instant il n'a que admin
-					adminPages.setVisible(true);
+					UserPages userPages = new UserPages(); 
+					userPages.setVisible(true);
 					frame.dispose(); 
-					break; 
+					System.out.println("user");
+					break;
 				case 2:
+					SuperuserPages superuserPages = new SuperuserPages();
+					superuserPages.setVisible(true);
+					frame.dispose(); 
 					System.out.println("superuser");
 					break;
 				case 3:
+					AdminPages adminPages = new AdminPages(); 
+					adminPages.setVisible(true);
+					frame.dispose(); 
 					System.out.println("admin");
 					break; 
 				default:

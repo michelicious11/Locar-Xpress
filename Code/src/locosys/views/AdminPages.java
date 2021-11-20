@@ -45,6 +45,8 @@ public class AdminPages extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 815, 602);
 		getContentPane().setLayout(null);
+		this.setLocationRelativeTo(null);
+
 
 		/**
 		 * Les elements des cartes
@@ -179,10 +181,6 @@ public class AdminPages extends JFrame {
 		separatorClients.setBounds(22, 31, 127, 16);
 		clientsTab.add(separatorClients);
 
-		JTextPane noClientClients = new JTextPane();
-		noClientClients.setBounds(12, 49, 31, 22);
-		clientsTab.add(noClientClients);
-
 		JTextPane prenomClients = new JTextPane();
 		prenomClients.setBounds(47, 49, 59, 22);
 		clientsTab.add(prenomClients);
@@ -257,11 +255,6 @@ public class AdminPages extends JFrame {
 		vehiculesTable.setBounds(47, 109, 466, 251);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 
-
-
-		JTextPane noVehiculeInputVehicules = new JTextPane();
-		noVehiculeInputVehicules.setBounds(23, 49, 85, 24);
-		vehiculesTab.add(noVehiculeInputVehicules);
 
 		JTextPane typeVehicule = new JTextPane();
 		typeVehicule.setBounds(120, 49, 90, 24);
@@ -478,7 +471,7 @@ public class AdminPages extends JFrame {
 				adminPages.dispose();
 			}
 		});
-		logoutLbl.setIcon(new ImageIcon(AdminPages.class.getResource("/images/logout-small.jpg")));
+		logoutLbl.setIcon(new ImageIcon(UserPages.class.getResource("/images/logout-small.jpg")));
 		logoutLbl.setBounds(511, 24, 56, 54);
 		bottomBar.add(logoutLbl);
 
@@ -571,7 +564,7 @@ public class AdminPages extends JFrame {
 		sideBar.add(dashBtn);
 
 		JLabel logoLbl = new JLabel("");
-		logoLbl.setIcon(new ImageIcon(AdminPages.class.getResource("/images/logoSmall.png")));
+		logoLbl.setIcon(new ImageIcon(UserPages.class.getResource("/images/logoSmall.png")));
 		logoLbl.setBounds(0, 0, 179, 134);
 		sideBar.add(logoLbl);
 	}

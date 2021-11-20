@@ -2,7 +2,7 @@ package main;
 
 import java.awt.EventQueue;
 import locosys.controller.AppLoginController;
-import locosys.views.AdminPages;
+import locosys.views.UserPages;
 
 public class main {
 
