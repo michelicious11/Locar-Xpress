@@ -12,6 +12,7 @@ public class main {
 	 */
 	public static void main(String[] args) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 		
 		//System.out.println(AppLoginController.usernamePasswordCheck("staluk", "password2"));
@@ -22,6 +23,10 @@ public class main {
 =======
 		System.out.println(ConnectionBD.readDB());
 >>>>>>> fd7845e (Path fix)
+=======
+		
+		//System.out.println(ConnectionBD.readDB());
+>>>>>>> 9145599 (fix le 2e prob de path)
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
