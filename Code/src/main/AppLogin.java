@@ -19,6 +19,8 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import locosys.controller.AppLoginController ;
+
 public class AppLogin {
 
 	private JFrame frame;
@@ -89,11 +91,26 @@ public class AppLogin {
 		 * */
 		JButton submitBtn = new JButton("Soumettre");
 		submitBtn.addMouseListener(new MouseAdapter() {
+			
+			//utilise la fonction getTypeUtilisateur du AppLoginController pour retourner l'information de la db
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AdminPages adminPages = new AdminPages(); //pour l'instant il n'a que admin
-				adminPages.setVisible(true);
-				frame.dispose(); 
+				switch(AppLoginController.getTypeUtilisateur(usernameField.getText(), passwordField.getText())) {
+				case 1:
+					AdminPages adminPages = new AdminPages(); //pour l'instant il n'a que admin
+					adminPages.setVisible(true);
+					frame.dispose(); 
+					break; 
+				case 2:
+					System.out.println("superuser");
+					break;
+				case 3:
+					System.out.println("admin");
+					break; 
+				default:
+					System.out.println("erreur");
+				}
+				
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);
