@@ -14,9 +14,13 @@ public class ConnectionBD {
 	private String fileName;
 	private String commands; 
 	private static String url = "jdbc:sqlite:";
+<<<<<<< HEAD
 	//relative path pour que ca fonctionne sur la plupart des ordis (a voir si on peut faire mieux)
 	private static String url2 = ".\\..\\..\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
 	private static String url3 = ".\\..\\..\\Documents\\locar-xpress\\";
+=======
+	static String url2 = "..\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+>>>>>>> fd7845e (Path fix)
 	//private static Connection conn;
 	//private static Statement stmt; 
 

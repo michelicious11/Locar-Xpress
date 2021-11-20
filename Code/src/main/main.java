@@ -11,6 +11,7 @@ public class main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		
 		
 		//System.out.println(AppLoginController.usernamePasswordCheck("staluk", "password2"));
@@ -18,6 +19,9 @@ public class main {
 		//AppLoginController.getTypeUtilisateur("staluk", "password2");
 		
 		
+=======
+		System.out.println(ConnectionBD.readDB());
+>>>>>>> fd7845e (Path fix)
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
