@@ -12,14 +12,12 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD:Code/src/main/Main.java
+
 		// Only need to be run once
 		//ConnectionBD.createNewDatabase("locosys.db");
 		//ConnectionBD.insertIntoDB();
 		
-=======
-		//System.out.println(ConnectionBD.readDB());
->>>>>>> main:Code/src/main/main.java
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
