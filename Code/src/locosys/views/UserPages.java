@@ -30,8 +30,16 @@ public class UserPages extends JFrame {
 	private JTable clientsTable;
 	private JTable vehiculesTable;
 	private JTable usersTable;
+	private JLabel welcomeLbl;
 
-	//
+	public JLabel getWelcomeLbl() {
+		return welcomeLbl;
+	}
+
+	public void setWelcomeText(String welcomeLblText, JLabel label) {
+		label.setText(welcomeLblText);
+	}
+
 	private JFrame userPages; 
 
 
@@ -273,30 +281,18 @@ public class UserPages extends JFrame {
 		vehiculesTab.add(separatorVehicules);
 
 
+
 		/*
 		 * card 4 (utilisateurs)
 		 * 
 		 * */
+
 		JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
 		usersTab.setBackground(new Color(112,146,190));
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
-
-		JButton changePasswordBtn = new JButton("Modifier le mot de passe");
-		changePasswordBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("le mot de passe est change");
-			}
-		});
-		changePasswordBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		changePasswordBtn.setBounds(49, 147, 130, 40);
-		usersTab.add(changePasswordBtn);
 
 		//Changement du nom de la page pour Utilisateurs
 		JLabel usersLbl = new JLabel("Utilisateurs");
@@ -308,6 +304,19 @@ public class UserPages extends JFrame {
 		separatorUsers.setBounds(23, 28, 139, 14);
 		usersTab.add(separatorUsers);
 
+		JPanel panelCentreUsers = new JPanel();
+		panelCentreUsers.setLayout(null);
+		panelCentreUsers.setBackground(new Color(1, 50, 62));
+		panelCentreUsers.setBounds(75, 83, 410, 223);
+		usersTab.add(panelCentreUsers);
+
+		JButton changePasswordBtn = new JButton("Changer le mot de passe");
+		changePasswordBtn.setBounds(77, 38, 253, 58);
+		panelCentreUsers.add(changePasswordBtn);
+
+		JButton deconnexionBtn = new JButton("Se deconnecter");
+		deconnexionBtn.setBounds(77, 127, 253, 58);
+		panelCentreUsers.add(deconnexionBtn);
 
 		/**
 		 * 
@@ -361,7 +370,7 @@ public class UserPages extends JFrame {
 		retourBtn.setBounds(269, 24, 99, 44);
 		topBar.add(retourBtn);
 
-		JLabel welcomeLbl = new JLabel("BIENVENUE, [username]");
+		welcomeLbl = new JLabel("TEST");
 		welcomeLbl.setBounds(384, 0, 182, 32);
 		topBar.add(welcomeLbl);
 

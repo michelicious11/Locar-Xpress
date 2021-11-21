@@ -1,11 +1,8 @@
 package main;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -22,12 +19,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import locosys.controller.AppLoginController ;
+import locosys.controller.AppPagesController;
 
 public class AppLogin {
 
 	private JFrame frame;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
+	
+	private String username;
+	private String password;
+	private String prenomEmploye;
+	private int noUtilisateur; 
+	private int noEmploye; 
+	
 
 	/**
 	 * Create the login page
@@ -94,25 +99,33 @@ public class AppLogin {
 		 * */
 		JButton submitBtn = new JButton("Soumettre");
 		submitBtn.addMouseListener(new MouseAdapter() {
-			
+						
 			//utilise la fonction getTypeUtilisateur du AppLoginController pour retourner l'information de la db
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				switch(AppLoginController.getTypeUtilisateur(usernameField.getText(), passwordField.getText())) {
+				username = usernameField.getText();
+				password = passwordField.getText();
+				noEmploye = AppLoginController.getNoEmploye(username, password); 
+				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
+				
+				switch(AppLoginController.getTypeUtilisateur(username, password)) {
 				case 1:
 					UserPages userPages = new UserPages(); 
 					userPages.setVisible(true);
+					userPages.setWelcomeText("Bienvenue " + prenomEmploye, userPages.getWelcomeLbl());
 					frame.dispose(); 
 					System.out.println("user");
 					break;
 				case 2:
 					SuperuserPages superuserPages = new SuperuserPages();
+					superuserPages.setWelcomeText("Bienvenue " + prenomEmploye, superuserPages.getWelcomeLbl());
 					superuserPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("superuser");
 					break;
 				case 3:
-					AdminPages adminPages = new AdminPages(); 
+					AdminPages adminPages = new AdminPages();
+					adminPages.setWelcomeText("Bienvenue " + prenomEmploye, adminPages.getWelcomeLbl());
 					adminPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("admin");

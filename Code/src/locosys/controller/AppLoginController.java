@@ -44,4 +44,21 @@ public class AppLoginController {
 		}
 		return 0;
 	}
+	
+	public static int getNoEmploye(String nomUtilisateurInput, String motDePasseInput) {
+
+		if(usernamePasswordCheck(nomUtilisateurInput, motDePasseInput)) {
+			String query = "SELECT idEmploye FROM Utilisateur WHERE nomUtilisateur = '" +  nomUtilisateurInput + "'";
+
+			try(Connection conn = DriverManager.getConnection(url)) {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+				return rs.getInt("idEmploye");
+
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
 }

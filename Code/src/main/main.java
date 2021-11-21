@@ -12,11 +12,9 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		
-		
-		//System.out.println(AppLoginController.usernamePasswordCheck("staluk", "password2"));
-		//System.out.println(ConnectionBD.readDB() + ConnectionBD.getUrl2());
-		//AppLoginController.getTypeUtilisateur("staluk", "password2");
-		
+		// Only need to be run once
+		//ConnectionBD.createNewDatabase("locosys.db");
+		//ConnectionBD.insertIntoDB();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

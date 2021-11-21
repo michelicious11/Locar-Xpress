@@ -30,11 +30,17 @@ public class SuperuserPages extends JFrame {
 	private JTable clientsTable;
 	private JTable vehiculesTable;
 	private JTable usersTable;
+	private JLabel welcomeLbl;
 
+	public JLabel getWelcomeLbl() {
+		return welcomeLbl;
+	}
 	//
 	private JFrame superuserPages; 
 
-
+	public void setWelcomeText(String welcomeLblText, JLabel label) {
+		label.setText(welcomeLblText);
+	}
 
 	/**
 	 * Create the frame.
@@ -271,32 +277,12 @@ public class SuperuserPages extends JFrame {
 		JSeparator separatorVehicules = new JSeparator();
 		separatorVehicules.setBounds(23, 28, 139, 14);
 		vehiculesTab.add(separatorVehicules);
-
-
-		/*
-		 * card 4 (utilisateurs)
-		 * 
-		 * */
 		JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
 		usersTab.setBackground(new Color(112,146,190));
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
-
-		JButton changePasswordBtn = new JButton("Modifier le mot de passe");
-		changePasswordBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("le mot de passe est change");
-			}
-		});
-		changePasswordBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		changePasswordBtn.setBounds(49, 147, 130, 40);
-		usersTab.add(changePasswordBtn);
 
 		//Changement du nom de la page pour Utilisateurs
 		JLabel usersLbl = new JLabel("Utilisateurs");
@@ -308,11 +294,19 @@ public class SuperuserPages extends JFrame {
 		separatorUsers.setBounds(23, 28, 139, 14);
 		usersTab.add(separatorUsers);
 
+		JPanel panelCentreUsers = new JPanel();
+		panelCentreUsers.setLayout(null);
+		panelCentreUsers.setBackground(new Color(1, 50, 62));
+		panelCentreUsers.setBounds(70, 93, 410, 223);
+		usersTab.add(panelCentreUsers);
 
-		/*
-		 * card 5 (gestion)
-		 * 
-		 */
+		JButton changePasswordBtn = new JButton("Changer le mot de passe");
+		changePasswordBtn.setBounds(77, 38, 253, 58);
+		panelCentreUsers.add(changePasswordBtn);
+
+		JButton deconnexionBtn = new JButton("Se deconnecter");
+		deconnexionBtn.setBounds(77, 127, 253, 58);
+		panelCentreUsers.add(deconnexionBtn);
 		JPanel gestionTab = new JPanel();
 		gestionTab.setVisible(false);
 		gestionTab.setBounds(0, 0, 579, 399);
@@ -352,6 +346,18 @@ public class SuperuserPages extends JFrame {
 		JSeparator separatorGestion = new JSeparator();
 		separatorGestion.setBounds(12, 34, 139, 14);
 		gestionTab.add(separatorGestion);
+
+
+		/*
+		 * card 4 (utilisateurs)
+		 * 
+		 * */
+
+
+		/*
+		 * card 5 (gestion)
+		 * 
+		 */
 
 
 		/**
@@ -406,7 +412,7 @@ public class SuperuserPages extends JFrame {
 		retourBtn.setBounds(269, 24, 99, 44);
 		topBar.add(retourBtn);
 
-		JLabel welcomeLbl = new JLabel("BIENVENUE, [username]");
+		welcomeLbl = new JLabel("TEST");
 		welcomeLbl.setBounds(384, 0, 182, 32);
 		topBar.add(welcomeLbl);
 
