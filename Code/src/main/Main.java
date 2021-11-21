@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 import locosys.controller.AppLoginController;
 import locosys.views.UserPages;
 
-public class main {
+public class Main {
 
 	/**
 	 * Create the database.
