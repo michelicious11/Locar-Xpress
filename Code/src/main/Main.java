@@ -1,10 +1,10 @@
 package main;
 
 import java.awt.EventQueue;
+import locosys.controller.AppLoginController;
+import locosys.views.UserPages;
 
-import locosys.views.AdminPages;
-
-public class main {
+public class Main {
 
 	/**
 	 * Create the database.
@@ -12,7 +12,14 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		
+<<<<<<< HEAD:Code/src/main/Main.java
+		// Only need to be run once
+		//ConnectionBD.createNewDatabase("locosys.db");
+		//ConnectionBD.insertIntoDB();
+		
+=======
 		//System.out.println(ConnectionBD.readDB());
+>>>>>>> main:Code/src/main/main.java
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

@@ -2,13 +2,11 @@ package main;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 
 public class ConnectionBD {
@@ -17,9 +15,24 @@ public class ConnectionBD {
 	private String fileName;
 	private String commands; 
 	private static String url = "jdbc:sqlite:";
+<<<<<<< HEAD
+	//relative path pour que ca fonctionne sur la plupart des ordis (a voir si on peut faire mieux)
+	private static String url2 = "database\\sqlBrowserLocarXpress.sql";
+=======
 	static String url2 = "..\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+>>>>>>> main
 	//private static Connection conn;
 	//private static Statement stmt; 
+
+	public static String getUrl3() {
+		return url2;
+	}
+
+
+	public static void setUrl3(String url3) {
+		ConnectionBD.url2 = url3;
+	}
+
 
 	/**
 	 * Connects to the database (creates one in the project if it doesnt exist)
@@ -37,22 +50,20 @@ public class ConnectionBD {
 		}
 	}
 
+
 	//fonction qui retourne le fichier sql en string
 	public static String readDB() {
 		
 		String filePath = new File("").getAbsolutePath();
 		System.out.println (filePath);
-
-		//http://stackoverflow.com/questions/2788080/reading-a-text-file-in-java    
-		//http://stackoverflow.com/questions/19874066/how-to-read-text-file-relative-path
-		//BufferedReader reader = new BufferedReader(new FileReader(filePath + "/src/DBTextFiles/Administrator.txt"));
-		
 		
 		String commands;
 		String commandsFinal= ""; 
+		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+		InputStream inputstream = classloader.getResourceAsStream(url2);
 		try {
 			BufferedReader br = new BufferedReader(
-					new FileReader(url2));
+					new InputStreamReader(inputstream, StandardCharsets.UTF_8));
 
 
 			while((commands = br.readLine()) != null) {
@@ -70,11 +81,47 @@ public class ConnectionBD {
 
 		try {
 			Connection conn = DriverManager.getConnection(url);
-			Statement ps = conn.createStatement();
-			ps.executeUpdate(readDB());
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(readDB());
 			System.out.println("ca mooorche");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * Getters a
+	 * */
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getCommands() {
+		return commands;
+	}
+
+	public void setCommands(String commands) {
+		this.commands = commands;
+	}
+
+	public static String getUrl() {
+		return url;
+	}
+
+	public static void setUrl(String url) {
+		ConnectionBD.url = url;
+	}
+
+	public static String getUrl2() {
+		return url2;
+	}
+
+	public static void setUrl2(String url2) {
+		ConnectionBD.url2 = url2;
+	}
+
 }
