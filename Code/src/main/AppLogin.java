@@ -26,13 +26,12 @@ public class AppLogin {
 	private JFrame frame;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	
+
 	private String username;
 	private String password;
 	private String prenomEmploye;
-	private int noUtilisateur; 
 	private int noEmploye; 
-	
+
 
 	/**
 	 * Create the login page
@@ -99,7 +98,7 @@ public class AppLogin {
 		 * */
 		JButton submitBtn = new JButton("Soumettre");
 		submitBtn.addMouseListener(new MouseAdapter() {
-						
+
 			//utilise la fonction getTypeUtilisateur du AppLoginController pour retourner l'information de la db
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -107,7 +106,7 @@ public class AppLogin {
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
 				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
-				
+
 				switch(AppLoginController.getTypeUtilisateur(username, password)) {
 				case 1:
 					UserPages userPages = new UserPages(); 
@@ -133,7 +132,7 @@ public class AppLogin {
 				default:
 					System.out.println("erreur");
 				}
-				
+
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);

@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.swing.JTable;
+
+import net.proteanit.sql.DbUtils;
+
 public class AppPagesController {
 	private static String [] users = new String[99]; 
 	private static String url = "jdbc:sqlite:locosys.db";
@@ -22,5 +26,54 @@ public class AppPagesController {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
+	public static void loadEmployeeTable(JTable table) {
+		String query = "SELECT * FROM Employe";
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void loadClientsTable(JTable table) {
+		String query = "SELECT * FROM Client";
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void loadVehiculesTable(JTable table) {
+		String query = "SELECT * FROM Vehicule";
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void loadUsersTable(JTable table) {
+		String query = "SELECT * FROM Utilisateur";
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

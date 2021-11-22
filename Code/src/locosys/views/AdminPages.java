@@ -25,6 +25,9 @@ import java.awt.event.MouseEvent;
 import main.AppLogin;
 import com.toedter.calendar.JDateChooser;
 
+import locosys.controller.AppPagesController;
+
+
 public class AdminPages extends JFrame {
 
 	//Tables des cards (gestion en a pas)
@@ -163,32 +166,7 @@ public class AdminPages extends JFrame {
 		clientsTab.add(clientsScrollPane);
 
 		clientsTable = new JTable();
-		clientsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-				},
-				new String[] {
-						"No", "Prenom", "Nom", "Telephone", "Adresse", "Date naissance", "Permis", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, String.class, String.class, String.class, String.class, Object.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		clientsTable.getColumnModel().getColumn(0).setPreferredWidth(34);
-		clientsTable.getColumnModel().getColumn(1).setPreferredWidth(66);
-		clientsTable.getColumnModel().getColumn(2).setPreferredWidth(61);
-		clientsTable.getColumnModel().getColumn(3).setPreferredWidth(91);
-		clientsTable.getColumnModel().getColumn(4).setPreferredWidth(108);
-		clientsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-		clientsTable.getColumnModel().getColumn(6).setPreferredWidth(52);
+		AppPagesController.loadClientsTable(clientsTable);
 		clientsScrollPane.setViewportView(clientsTable);
 
 		JSeparator separatorClients = new JSeparator();
@@ -237,36 +215,7 @@ public class AdminPages extends JFrame {
 		vehiculesTab.add(vehiculesScrollPane);
 
 		vehiculesTable = new JTable();
-		vehiculesTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Vehicule", "Type", "Marque", "Couleur", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Integer.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		vehiculesTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		vehiculesTable.getColumnModel().getColumn(0).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		vehiculesTable.getColumnModel().getColumn(1).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(2).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(3).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(4).setMinWidth(20);
-		vehiculesTable.setBounds(47, 109, 466, 251);
+		AppPagesController.loadVehiculesTable(vehiculesTable);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 
 
@@ -298,6 +247,11 @@ public class AdminPages extends JFrame {
 
 
 		//card 4 (utilisateurs)
+
+		vehiculesTable = new JTable();
+		AppPagesController.loadVehiculesTable(vehiculesTable);
+		vehiculesScrollPane.setViewportView(vehiculesTable);
+		
 		JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
@@ -305,41 +259,13 @@ public class AdminPages extends JFrame {
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
 
+		
 		JScrollPane usersScrollPane = new JScrollPane(usersTable);
 		usersScrollPane.setBounds(23, 85, 530, 302);
 		usersTab.add(usersScrollPane);
-
+		
 		usersTable = new JTable();
-		usersTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Utilisateur", "No Employe", "Nom Utilisateur", "Mot de passe", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, String.class, String.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		usersTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		usersTable.getColumnModel().getColumn(0).setMinWidth(20);
-		usersTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		usersTable.getColumnModel().getColumn(1).setMinWidth(20);
-		usersTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		usersTable.getColumnModel().getColumn(2).setMinWidth(20);
-		usersTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		usersTable.getColumnModel().getColumn(3).setMinWidth(20);
-		usersTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		usersTable.getColumnModel().getColumn(4).setMinWidth(20);
-		usersTable.setBounds(47, 109, 466, 251);
+		AppPagesController.loadUsersTable(usersTable);
 		usersScrollPane.setViewportView(usersTable);
 
 		JTextPane noUsersUsers = new JTextPane();
@@ -371,46 +297,53 @@ public class AdminPages extends JFrame {
 		JSeparator separatorUsers = new JSeparator();
 		separatorUsers.setBounds(23, 28, 139, 14);
 		usersTab.add(separatorUsers);
-		
-		
-				//card 5 (gestion)
-				JPanel gestionTab = new JPanel();
-				gestionTab.setVisible(false);
-				gestionTab.setBounds(0, 0, 579, 399);
-				gestionTab.setBackground(new Color(112,146,190));
-				pnlCards.add(gestionTab);
-				gestionTab.setLayout(null);
-				
-						JPanel panelCentreGestion = new JPanel();
-						panelCentreGestion.setBounds(70, 60, 410, 286);
-						panelCentreGestion.setBackground(new Color(1, 50, 62));
-						gestionTab.add(panelCentreGestion);
-						panelCentreGestion.setLayout(null);
-						
-								JButton modalitesLocationGestionBtn = new JButton("Modalites de location");
-								modalitesLocationGestionBtn.setBounds(100, 23, 205, 50);
-								panelCentreGestion.add(modalitesLocationGestionBtn);
-								
-										JButton employesGestionBtn = new JButton("Employes");
-										employesGestionBtn.setBounds(100, 85, 205, 50);
-										panelCentreGestion.add(employesGestionBtn);
-										
-												JButton rapportsGestionBtn = new JButton("Rapports");
-												rapportsGestionBtn.setBounds(100, 147, 205, 50);
-												panelCentreGestion.add(rapportsGestionBtn);
-												
-														JButton soumissionGestionBtn = new JButton("Soumissions");
-														soumissionGestionBtn.setBounds(100, 209, 205, 50);
-														panelCentreGestion.add(soumissionGestionBtn);
-														
-																JLabel gestionLbl = new JLabel("Gestion");
-																gestionLbl.setFont(new Font("Dialog", Font.BOLD, 15));
-																gestionLbl.setBounds(12, 0, 171, 49);
-																gestionTab.add(gestionLbl);
-																
-																		JSeparator separatorGestion = new JSeparator();
-																		separatorGestion.setBounds(12, 34, 139, 14);
-																		gestionTab.add(separatorGestion);
+
+
+		//card 5 (gestion)
+		JPanel gestionTab = new JPanel();
+		gestionTab.setVisible(false);
+		gestionTab.setBounds(0, 0, 579, 399);
+		gestionTab.setBackground(new Color(112,146,190));
+		pnlCards.add(gestionTab);
+		gestionTab.setLayout(null);
+
+		JPanel panelCentreGestion = new JPanel();
+		panelCentreGestion.setBounds(70, 60, 410, 286);
+		panelCentreGestion.setBackground(new Color(1, 50, 62));
+		gestionTab.add(panelCentreGestion);
+		panelCentreGestion.setLayout(null);
+
+		JButton modalitesLocationGestionBtn = new JButton("Modalites de location");
+		modalitesLocationGestionBtn.setBounds(100, 23, 205, 50);
+		panelCentreGestion.add(modalitesLocationGestionBtn);
+
+		JButton employesGestionBtn = new JButton("Employes");
+		employesGestionBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EmployeGestionPage employePage = EmployeGestionPage.getInstance();
+				employePage.getEmployeGestionPage().setVisible(true); 
+			}
+		});
+		employesGestionBtn.setBounds(100, 85, 205, 50);
+		panelCentreGestion.add(employesGestionBtn);
+
+		JButton rapportsGestionBtn = new JButton("Rapports");
+		rapportsGestionBtn.setBounds(100, 147, 205, 50);
+		panelCentreGestion.add(rapportsGestionBtn);
+
+		JButton soumissionGestionBtn = new JButton("Soumissions");
+		soumissionGestionBtn.setBounds(100, 209, 205, 50);
+		panelCentreGestion.add(soumissionGestionBtn);
+
+		JLabel gestionLbl = new JLabel("Gestion");
+		gestionLbl.setFont(new Font("Dialog", Font.BOLD, 15));
+		gestionLbl.setBounds(12, 0, 171, 49);
+		gestionTab.add(gestionLbl);
+
+		JSeparator separatorGestion = new JSeparator();
+		separatorGestion.setBounds(12, 34, 139, 14);
+		gestionTab.add(separatorGestion);
 
 
 		/**
