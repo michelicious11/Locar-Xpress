@@ -12,8 +12,8 @@ import net.proteanit.sql.DbUtils;
 public class AppPagesController {
 	private static String [] users = new String[99]; 
 	private static String url = "jdbc:sqlite:locosys.db";
-	
-	
+
+
 	//methode pour verifier si le nom utilisateur et le mot de passe match avec l'information de la base de donnees
 	public static String afficherBienvenuePrenomEmploye(int noEmploye) {
 		String query = "SELECT * FROM Employe WHERE idEmploye = '" +  noEmploye + "'";
@@ -27,7 +27,7 @@ public class AppPagesController {
 		}
 		return "";
 	}
-	
+
 	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
 	public static void loadEmployeeTable(JTable table) {
 		String query = "SELECT * FROM Employe";
@@ -40,7 +40,7 @@ public class AppPagesController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void loadClientsTable(JTable table) {
 		String query = "SELECT * FROM Client";
 
@@ -52,9 +52,15 @@ public class AppPagesController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void loadVehiculesTable(JTable table) {
-		String query = "SELECT * FROM Vehicule";
+		String query = "SELECT Vehicule.idVehicule AS 'No Vehicule', MarqueVehicule.nomMarque as 'Marque', "
+						+ "CouleurVehicule.nomCouleur AS 'Couleur', TypeVehicule.nomType AS 'Type' FROM MarqueVehicule "
+						+ "LEFT JOIN Vehicule ON MarqueVehicule.idMarqueVehicule = Vehicule.idMarqueVehicule "
+						+ "LEFT JOIN TypeVehicule ON TypeVehicule.idTypeVehicule = Vehicule.idTypeVehicule "
+						+ "LEFT JOIN CouleurVehicule ON CouleurVehicule.idCouleurVehicule = Vehicule.idCouleurVehicule "
+						+ "GROUP BY idVehicule;";
+
 
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
@@ -64,7 +70,7 @@ public class AppPagesController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void loadUsersTable(JTable table) {
 		String query = "SELECT * FROM Utilisateur";
 
