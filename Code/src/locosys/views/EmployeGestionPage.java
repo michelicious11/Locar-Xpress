@@ -50,7 +50,7 @@ public class EmployeGestionPage extends JFrame {
 		employeGestionPage = this; 
 		employeGestionPage = new JFrame();
 		employeGestionPage.setBounds(100, 100, 630, 495);
-		employeGestionPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		employeGestionPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		employeGestionPage.setLocationRelativeTo(null);
 		employeGestionPage.getContentPane().setLayout(null);
 		

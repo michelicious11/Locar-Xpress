@@ -73,184 +73,99 @@ public class AdminPages extends JFrame {
 		pnlCards.setBounds(222, 79, 579, 399);
 		getContentPane().add(pnlCards);
 		pnlCards.setLayout(null);
+								
+										//card 3 (vehicules)
+										JPanel vehiculesTab = new JPanel();
+										vehiculesTab.setVisible(false);
+										
+												//card 2 (clients)		
+												JPanel clientsTab = new JPanel();
+												clientsTab.setVisible(false);
+												
+												
+														//card 1 (tableau de bord)
+														JPanel dashTab = new JPanel();
+														dashTab.setBounds(0, 0, 579, 399);
+														dashTab.setBackground(new Color(112,146,190));
+														pnlCards.add(dashTab);
+														dashTab.setLayout(null);
+														
+																locationsTable = new JTable();
+																AppPagesController.loadLocationTable(locationsTable);
+																
+																		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
+																		locationsScrollPane.setBounds(23, 85, 530, 302);
+																		dashTab.add(locationsScrollPane);
+																		
+																				JLabel dashLbl = new JLabel("Tableau de bord");
+																				dashLbl.setFont(new Font("Dialog", Font.BOLD, 15));
+																				dashLbl.setBounds(23, -12, 171, 49);
+																				dashTab.add(dashLbl);
+																				
+																						JSeparator separatorDash = new JSeparator();
+																						separatorDash.setBounds(23, 28, 139, 14);
+																						dashTab.add(separatorDash);
+												clientsTab.setBounds(0, 0, 579, 399);
+												clientsTab.setBackground(new Color(112,146,190));
+												pnlCards.add(clientsTab);
+												clientsTab.setLayout(null);
+												
+														JLabel clientsLbl = new JLabel("Clients");
+														clientsLbl.setBounds(22, 0, 101, 32);
+														clientsLbl.setFont(new Font("Dialog", Font.BOLD, 16));
+														clientsTab.add(clientsLbl);
+														
+																JScrollPane clientsScrollPane = new JScrollPane((Component) null);
+																clientsScrollPane.setBounds(12, 83, 550, 286);
+																clientsTab.add(clientsScrollPane);
+																
+																		clientsTable = new JTable();
+																		AppPagesController.loadClientsTable(clientsTable);
+																		clientsScrollPane.setViewportView(clientsTable);
+																		
+																				JSeparator separatorClients = new JSeparator();
+																				separatorClients.setBounds(22, 31, 127, 16);
+																				clientsTab.add(separatorClients);
+																				
+																				JButton clientsMenuBtn = new JButton("Menu clients");
+																				clientsMenuBtn.setBounds(349, 31, 213, 35);
+																				clientsTab.add(clientsMenuBtn);
+										vehiculesTab.setBounds(0, 0, 579, 399);
+										vehiculesTab.setBackground(new Color(112,146,190));
+										pnlCards.add(vehiculesTab);
+										vehiculesTab.setLayout(null);
+										
+												JScrollPane vehiculesScrollPane = new JScrollPane(vehiculesTable);
+												vehiculesScrollPane.setBounds(23, 85, 530, 302);
+												vehiculesTab.add(vehiculesScrollPane);
+												
+														vehiculesTable = new JTable();
+														AppPagesController.loadVehiculesTable(vehiculesTable);
+														vehiculesScrollPane.setViewportView(vehiculesTable);
+														
+																JLabel vehiculesLbl = new JLabel("Vehicules");
+																vehiculesLbl.setFont(new Font("Dialog", Font.BOLD, 15));
+																vehiculesLbl.setBounds(23, -12, 171, 49);
+																vehiculesTab.add(vehiculesLbl);
+																
+																		JSeparator separatorVehicules = new JSeparator();
+																		separatorVehicules.setBounds(23, 28, 139, 14);
+																		vehiculesTab.add(separatorVehicules);
+																		
+																		
+																				//card 4 (utilisateurs)
+																				vehiculesTable = new JTable();
+																				AppPagesController.loadVehiculesTable(vehiculesTable);
+																				vehiculesScrollPane.setViewportView(vehiculesTable);
+																				
+																				JButton btnMenuVehicules = new JButton("Menu vehicules");
+																				btnMenuVehicules.setBounds(340, 26, 213, 35);
+																				vehiculesTab.add(btnMenuVehicules);
 
 
-		//card 1 (tableau de bord)
-		JPanel dashTab = new JPanel();
-		dashTab.setBounds(0, 0, 579, 399);
-		dashTab.setBackground(new Color(112,146,190));
-		pnlCards.add(dashTab);
-		dashTab.setLayout(null);
-
-		locationsTable = new JTable();
-		locationsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Client", "No Vehicule", "Date depart", "Date retour", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		locationsTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		locationsTable.getColumnModel().getColumn(0).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		locationsTable.getColumnModel().getColumn(1).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(2).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(3).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(4).setMinWidth(20);
-		locationsTable.setBounds(47, 109, 466, 251);
-
-		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
-		locationsScrollPane.setBounds(23, 85, 530, 302);
-		dashTab.add(locationsScrollPane);
-
-		JTextPane noClientInputDash = new JTextPane();
-		noClientInputDash.setBounds(23, 49, 85, 24);
-		dashTab.add(noClientInputDash);
-
-		JTextPane noVehiculeDash = new JTextPane();
-		noVehiculeDash.setBounds(120, 49, 90, 24);
-		dashTab.add(noVehiculeDash);
-
-		JDateChooser locationsDateDepart = new JDateChooser();
-		locationsDateDepart.setBounds(222, 49, 95, 24);
-		dashTab.add(locationsDateDepart);
-
-		JDateChooser locationsDateRetour = new JDateChooser();
-		locationsDateRetour.setBounds(329, 49, 107, 24);
-		dashTab.add(locationsDateRetour);
-
-		JButton dashAjouterBtn = new JButton("Ajouter");
-		dashAjouterBtn.setBackground(new Color(34, 139, 34));
-		dashAjouterBtn.setBounds(448, 49, 105, 24);
-		dashTab.add(dashAjouterBtn);
-
-		JLabel dashLbl = new JLabel("Tableau de bord");
-		dashLbl.setFont(new Font("Dialog", Font.BOLD, 15));
-		dashLbl.setBounds(23, -12, 171, 49);
-		dashTab.add(dashLbl);
-
-		JSeparator separatorDash = new JSeparator();
-		separatorDash.setBounds(23, 28, 139, 14);
-		dashTab.add(separatorDash);
-
-		//card 2 (clients)		
-		JPanel clientsTab = new JPanel();
-		clientsTab.setVisible(false);
-		clientsTab.setBounds(0, 0, 579, 399);
-		clientsTab.setBackground(new Color(112,146,190));
-		pnlCards.add(clientsTab);
-		clientsTab.setLayout(null);
-
-		JLabel clientsLbl = new JLabel("Clients");
-		clientsLbl.setBounds(22, 0, 101, 32);
-		clientsLbl.setFont(new Font("Dialog", Font.BOLD, 16));
-		clientsTab.add(clientsLbl);
-
-		JScrollPane clientsScrollPane = new JScrollPane((Component) null);
-		clientsScrollPane.setBounds(12, 83, 550, 286);
-		clientsTab.add(clientsScrollPane);
-
-		clientsTable = new JTable();
-		AppPagesController.loadClientsTable(clientsTable);
-		clientsScrollPane.setViewportView(clientsTable);
-
-		JSeparator separatorClients = new JSeparator();
-		separatorClients.setBounds(22, 31, 127, 16);
-		clientsTab.add(separatorClients);
-
-		JTextPane prenomClients = new JTextPane();
-		prenomClients.setBounds(47, 49, 59, 22);
-		clientsTab.add(prenomClients);
-
-		JTextPane nomClients = new JTextPane();
-		nomClients.setBounds(109, 49, 53, 22);
-		clientsTab.add(nomClients);
-
-		JTextPane telephoneClients = new JTextPane();
-		telephoneClients.setBounds(168, 49, 80, 22);
-		clientsTab.add(telephoneClients);
-
-		JTextPane adresseClients = new JTextPane();
-		adresseClients.setBounds(252, 49, 90, 22);
-		clientsTab.add(adresseClients);
-
-		JTextPane permisClients = new JTextPane();
-		permisClients.setBounds(441, 49, 38, 22);
-		clientsTab.add(permisClients);
-
-		JDateChooser dateNaissanceClients = new JDateChooser();
-		dateNaissanceClients.setBounds(349, 48, 80, 26);
-		clientsTab.add(dateNaissanceClients);
-
-		JButton clientsAjouterBtn = new JButton("Ajouter");
-		clientsAjouterBtn.setBackground(new Color(34, 139, 34));
-		clientsAjouterBtn.setBounds(492, 48, 75, 26);
-		clientsTab.add(clientsAjouterBtn);
-
-		//card 3 (vehicules)
-		JPanel vehiculesTab = new JPanel();
-		vehiculesTab.setVisible(false);
-		vehiculesTab.setBounds(0, 0, 579, 399);
-		vehiculesTab.setBackground(new Color(112,146,190));
-		pnlCards.add(vehiculesTab);
-		vehiculesTab.setLayout(null);
-
-		JScrollPane vehiculesScrollPane = new JScrollPane(vehiculesTable);
-		vehiculesScrollPane.setBounds(23, 85, 530, 302);
-		vehiculesTab.add(vehiculesScrollPane);
-
-		vehiculesTable = new JTable();
-		AppPagesController.loadVehiculesTable(vehiculesTable);
-		vehiculesScrollPane.setViewportView(vehiculesTable);
-
-
-		JTextPane typeVehicule = new JTextPane();
-		typeVehicule.setBounds(120, 49, 90, 24);
-		vehiculesTab.add(typeVehicule);
-
-		JTextPane marqueVehicule = new JTextPane();
-		marqueVehicule.setBounds(222, 49, 95, 24);
-		vehiculesTab.add(marqueVehicule);
-
-		JTextPane couleurVehicule = new JTextPane();
-		couleurVehicule.setBounds(329, 49, 107, 24);
-		vehiculesTab.add(couleurVehicule);
-
-		JButton vehiculesAjouterBtn = new JButton("Ajouter");
-		vehiculesAjouterBtn.setBackground(new Color(34, 139, 34));
-		vehiculesAjouterBtn.setBounds(448, 49, 105, 24);
-		vehiculesTab.add(vehiculesAjouterBtn);
-
-		JLabel vehiculesLbl = new JLabel("Vehicules");
-		vehiculesLbl.setFont(new Font("Dialog", Font.BOLD, 15));
-		vehiculesLbl.setBounds(23, -12, 171, 49);
-		vehiculesTab.add(vehiculesLbl);
-
-		JSeparator separatorVehicules = new JSeparator();
-		separatorVehicules.setBounds(23, 28, 139, 14);
-		vehiculesTab.add(separatorVehicules);
-
-
-		//card 4 (utilisateurs)
-
-		vehiculesTable = new JTable();
-		AppPagesController.loadVehiculesTable(vehiculesTable);
-		vehiculesScrollPane.setViewportView(vehiculesTable);
+		//card 5 (gestion)
+		JPanel gestionTab = new JPanel();
+		gestionTab.setVisible(false);
 		
 		JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
@@ -258,50 +173,28 @@ public class AdminPages extends JFrame {
 		usersTab.setBackground(new Color(112,146,190));
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
-
 		
-		JScrollPane usersScrollPane = new JScrollPane(usersTable);
-		usersScrollPane.setBounds(23, 85, 530, 302);
-		usersTab.add(usersScrollPane);
-		
-		usersTable = new JTable();
-		AppPagesController.loadUsersTable(usersTable);
-		usersScrollPane.setViewportView(usersTable);
-
-		JTextPane noUsersUsers = new JTextPane();
-		noUsersUsers.setBounds(23, 49, 85, 24);
-		usersTab.add(noUsersUsers);
-
-		JTextPane noEmployeVehicules = new JTextPane();
-		noEmployeVehicules.setBounds(120, 49, 90, 24);
-		usersTab.add(noEmployeVehicules);
-
-		JTextPane nomUserUsers = new JTextPane();
-		nomUserUsers.setBounds(222, 49, 95, 24);
-		usersTab.add(nomUserUsers);
-
-		JTextPane passwordUsers = new JTextPane();
-		passwordUsers.setBounds(329, 49, 107, 24);
-		usersTab.add(passwordUsers);
-
-		JButton usersAjouterBtn = new JButton("Ajouter");
-		usersAjouterBtn.setBackground(new Color(34, 139, 34));
-		usersAjouterBtn.setBounds(448, 49, 105, 24);
-		usersTab.add(usersAjouterBtn);
-
-		JLabel usersLbl = new JLabel("Utilisateurs");
-		usersLbl.setFont(new Font("Dialog", Font.BOLD, 15));
-		usersLbl.setBounds(23, -12, 171, 49);
-		usersTab.add(usersLbl);
-
-		JSeparator separatorUsers = new JSeparator();
-		separatorUsers.setBounds(23, 28, 139, 14);
-		usersTab.add(separatorUsers);
-
-
-		//card 5 (gestion)
-		JPanel gestionTab = new JPanel();
-		gestionTab.setVisible(false);
+				
+				JScrollPane usersScrollPane = new JScrollPane(usersTable);
+				usersScrollPane.setBounds(23, 85, 530, 302);
+				usersTab.add(usersScrollPane);
+				
+				usersTable = new JTable();
+				AppPagesController.loadUsersTable(usersTable);
+				usersScrollPane.setViewportView(usersTable);
+				
+						JLabel usersLbl = new JLabel("Utilisateurs");
+						usersLbl.setFont(new Font("Dialog", Font.BOLD, 15));
+						usersLbl.setBounds(23, -12, 171, 49);
+						usersTab.add(usersLbl);
+						
+								JSeparator separatorUsers = new JSeparator();
+								separatorUsers.setBounds(23, 28, 139, 14);
+								usersTab.add(separatorUsers);
+								
+								JButton utilisateursMenuBtn = new JButton("Menu utilisateurs");
+								utilisateursMenuBtn.setBounds(340, 28, 213, 35);
+								usersTab.add(utilisateursMenuBtn);
 		gestionTab.setBounds(0, 0, 579, 399);
 		gestionTab.setBackground(new Color(112,146,190));
 		pnlCards.add(gestionTab);

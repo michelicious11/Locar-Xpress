@@ -27,6 +27,19 @@ public class AppPagesController {
 		}
 		return "";
 	}
+	
+	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
+	public static void loadLocationTable(JTable table) {
+		String query = "SELECT * FROM Contrat";
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
 	public static void loadEmployeeTable(JTable table) {
@@ -41,6 +54,7 @@ public class AppPagesController {
 		}
 	}
 
+	//methode pour loader la table clients dans le tab Client
 	public static void loadClientsTable(JTable table) {
 		String query = "SELECT * FROM Client";
 
@@ -52,7 +66,8 @@ public class AppPagesController {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//methode pour loader la table vehicules dans le tab Vehicule
 	public static void loadVehiculesTable(JTable table) {
 		String query = "SELECT Vehicule.idVehicule AS 'No Vehicule', MarqueVehicule.nomMarque as 'Marque', "
 						+ "CouleurVehicule.nomCouleur AS 'Couleur', TypeVehicule.nomType AS 'Type' FROM MarqueVehicule "
@@ -71,6 +86,7 @@ public class AppPagesController {
 		}
 	}
 
+	////methode pour loader la table users dans le tab Utilisateur
 	public static void loadUsersTable(JTable table) {
 		String query = "SELECT * FROM Utilisateur";
 

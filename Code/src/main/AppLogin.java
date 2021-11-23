@@ -76,7 +76,7 @@ public class AppLogin {
 		logoLbl.setBounds(48, 0, 129, 100);
 		coteDroit.add(logoLbl);
 
-		JLabel welcomeLbl = new JLabel("Welcome, ");
+		JLabel welcomeLbl = new JLabel("Bienvenue, ");
 		welcomeLbl.setFont(new Font("Tahoma", Font.BOLD, 18));
 		welcomeLbl.setBounds(26, 110, 118, 37);
 		coteDroit.add(welcomeLbl);
@@ -111,20 +111,20 @@ public class AppLogin {
 				case 1:
 					UserPages userPages = new UserPages(); 
 					userPages.setVisible(true);
-					userPages.setWelcomeText("Bienvenue " + prenomEmploye, userPages.getWelcomeLbl());
+					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
 					frame.dispose(); 
 					System.out.println("user");
 					break;
 				case 2:
 					SuperuserPages superuserPages = new SuperuserPages();
-					superuserPages.setWelcomeText("Bienvenue " + prenomEmploye, superuserPages.getWelcomeLbl());
+					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
 					superuserPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("superuser");
 					break;
 				case 3:
 					AdminPages adminPages = new AdminPages();
-					adminPages.setWelcomeText("Bienvenue " + prenomEmploye, adminPages.getWelcomeLbl());
+					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
 					adminPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("admin");
