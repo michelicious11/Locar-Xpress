@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JSeparator;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
@@ -30,10 +32,22 @@ public class AdminPages extends JFrame {
 	private JTable clientsTable;
 	private JTable vehiculesTable;
 	private JTable usersTable;
-	
-	//
+	private JLabel welcomeLbl;
+
+	public JLabel getWelcomeLbl() {
+		return welcomeLbl;
+	}
+
+
+	public void setWelcomeLbl(JLabel label, String welcomeLblText) {
+		label.setText(welcomeLblText);
+	}
+
 	private JFrame adminPages; 
 
+	public void setWelcomeText(String welcomeText, JLabel label){
+		label.setText(welcomeText);
+	}
 
 
 	/**
@@ -45,6 +59,8 @@ public class AdminPages extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 815, 602);
 		getContentPane().setLayout(null);
+		this.setLocationRelativeTo(null);
+
 
 		/**
 		 * Les elements des cartes
@@ -179,10 +195,6 @@ public class AdminPages extends JFrame {
 		separatorClients.setBounds(22, 31, 127, 16);
 		clientsTab.add(separatorClients);
 
-		JTextPane noClientClients = new JTextPane();
-		noClientClients.setBounds(12, 49, 31, 22);
-		clientsTab.add(noClientClients);
-
 		JTextPane prenomClients = new JTextPane();
 		prenomClients.setBounds(47, 49, 59, 22);
 		clientsTab.add(prenomClients);
@@ -257,11 +269,6 @@ public class AdminPages extends JFrame {
 		vehiculesTable.setBounds(47, 109, 466, 251);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 
-
-
-		JTextPane noVehiculeInputVehicules = new JTextPane();
-		noVehiculeInputVehicules.setBounds(23, 49, 85, 24);
-		vehiculesTab.add(noVehiculeInputVehicules);
 
 		JTextPane typeVehicule = new JTextPane();
 		typeVehicule.setBounds(120, 49, 90, 24);
@@ -364,45 +371,46 @@ public class AdminPages extends JFrame {
 		JSeparator separatorUsers = new JSeparator();
 		separatorUsers.setBounds(23, 28, 139, 14);
 		usersTab.add(separatorUsers);
-
-
-		//card 5 (gestion)
-		JPanel gestionTab = new JPanel();
-		gestionTab.setBounds(0, 0, 579, 399);
-		gestionTab.setBackground(new Color(112,146,190));
-		pnlCards.add(gestionTab);
-		gestionTab.setLayout(null);
-
-		JPanel panelCentreGestion = new JPanel();
-		panelCentreGestion.setBounds(70, 60, 410, 286);
-		panelCentreGestion.setBackground(new Color(1, 50, 62));
-		gestionTab.add(panelCentreGestion);
-		panelCentreGestion.setLayout(null);
-
-		JButton modalitesLocationGestionBtn = new JButton("Modalites de location");
-		modalitesLocationGestionBtn.setBounds(100, 23, 205, 50);
-		panelCentreGestion.add(modalitesLocationGestionBtn);
-
-		JButton employesGestionBtn = new JButton("Employes");
-		employesGestionBtn.setBounds(100, 85, 205, 50);
-		panelCentreGestion.add(employesGestionBtn);
-
-		JButton rapportsGestionBtn = new JButton("Rapports");
-		rapportsGestionBtn.setBounds(100, 147, 205, 50);
-		panelCentreGestion.add(rapportsGestionBtn);
-
-		JButton soumissionGestionBtn = new JButton("Soumissions");
-		soumissionGestionBtn.setBounds(100, 209, 205, 50);
-		panelCentreGestion.add(soumissionGestionBtn);
-
-		JLabel gestionLbl = new JLabel("Gestion");
-		gestionLbl.setFont(new Font("Dialog", Font.BOLD, 15));
-		gestionLbl.setBounds(12, 0, 171, 49);
-		gestionTab.add(gestionLbl);
-
-		JSeparator separatorGestion = new JSeparator();
-		separatorGestion.setBounds(12, 34, 139, 14);
-		gestionTab.add(separatorGestion);
+		
+		
+				//card 5 (gestion)
+				JPanel gestionTab = new JPanel();
+				gestionTab.setVisible(false);
+				gestionTab.setBounds(0, 0, 579, 399);
+				gestionTab.setBackground(new Color(112,146,190));
+				pnlCards.add(gestionTab);
+				gestionTab.setLayout(null);
+				
+						JPanel panelCentreGestion = new JPanel();
+						panelCentreGestion.setBounds(70, 60, 410, 286);
+						panelCentreGestion.setBackground(new Color(1, 50, 62));
+						gestionTab.add(panelCentreGestion);
+						panelCentreGestion.setLayout(null);
+						
+								JButton modalitesLocationGestionBtn = new JButton("Modalites de location");
+								modalitesLocationGestionBtn.setBounds(100, 23, 205, 50);
+								panelCentreGestion.add(modalitesLocationGestionBtn);
+								
+										JButton employesGestionBtn = new JButton("Employes");
+										employesGestionBtn.setBounds(100, 85, 205, 50);
+										panelCentreGestion.add(employesGestionBtn);
+										
+												JButton rapportsGestionBtn = new JButton("Rapports");
+												rapportsGestionBtn.setBounds(100, 147, 205, 50);
+												panelCentreGestion.add(rapportsGestionBtn);
+												
+														JButton soumissionGestionBtn = new JButton("Soumissions");
+														soumissionGestionBtn.setBounds(100, 209, 205, 50);
+														panelCentreGestion.add(soumissionGestionBtn);
+														
+																JLabel gestionLbl = new JLabel("Gestion");
+																gestionLbl.setFont(new Font("Dialog", Font.BOLD, 15));
+																gestionLbl.setBounds(12, 0, 171, 49);
+																gestionTab.add(gestionLbl);
+																
+																		JSeparator separatorGestion = new JSeparator();
+																		separatorGestion.setBounds(12, 34, 139, 14);
+																		gestionTab.add(separatorGestion);
 
 
 		/**
@@ -455,8 +463,9 @@ public class AdminPages extends JFrame {
 		retourBtn.setBounds(269, 24, 99, 44);
 		topBar.add(retourBtn);
 
-		JLabel welcomeLbl = new JLabel("BIENVENUE, [username]");
-		welcomeLbl.setBounds(384, 0, 182, 32);
+		welcomeLbl = new JLabel("TEST");
+		welcomeLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
+		welcomeLbl.setBounds(417, 0, 149, 32);
 		topBar.add(welcomeLbl);
 
 		/**
@@ -478,7 +487,7 @@ public class AdminPages extends JFrame {
 				adminPages.dispose();
 			}
 		});
-		logoutLbl.setIcon(new ImageIcon(AdminPages.class.getResource("/images/logout-small.jpg")));
+		logoutLbl.setIcon(new ImageIcon(UserPages.class.getResource("/images/logout-small.jpg")));
 		logoutLbl.setBounds(511, 24, 56, 54);
 		bottomBar.add(logoutLbl);
 
@@ -496,7 +505,7 @@ public class AdminPages extends JFrame {
 		gestionBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				usersTab.setVisible(true);
+				gestionTab.setVisible(true);
 				pnlCards.removeAll(); 
 				pnlCards.add(gestionTab);
 				pnlCards.repaint();
@@ -571,7 +580,7 @@ public class AdminPages extends JFrame {
 		sideBar.add(dashBtn);
 
 		JLabel logoLbl = new JLabel("");
-		logoLbl.setIcon(new ImageIcon(AdminPages.class.getResource("/images/logoSmall.png")));
+		logoLbl.setIcon(new ImageIcon(UserPages.class.getResource("/images/logoSmall.png")));
 		logoLbl.setBounds(0, 0, 179, 134);
 		sideBar.add(logoLbl);
 	}

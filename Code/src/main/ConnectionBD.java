@@ -22,7 +22,7 @@ public class ConnectionBD {
 //	private static String url2 = ".\\..\\..\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
 	private static String url3 = ".\\..\\..\\Documents\\locar-xpress\\";
 
-	static String url2 = "sqlBrowserLocarXpress.sql";
+	static String url2 = "../Locar-Xpress/resources/database/sqlBrowserLocarXpress.sql";
 
 
 	//private static Connection conn;

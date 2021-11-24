@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 import locosys.controller.AppLoginController;
 import locosys.views.AdminPages;
 
-public class main {
+public class Main {
 
 	/**
 	 * Create the database.
@@ -12,10 +12,10 @@ public class main {
 	 */
 	public static void main(String[] args) {
 
-		
+
 			System.out.println(ConnectionBD.readDB());
 
-	
+		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
