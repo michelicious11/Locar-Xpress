@@ -12,12 +12,10 @@ public class main {
 	 */
 	public static void main(String[] args) {
 
-		try {
+		
 			System.out.println(ConnectionBD.readDB());
 
-		}catch(Exception e) {
-			System.out.println("exception");
-		}
+	
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
