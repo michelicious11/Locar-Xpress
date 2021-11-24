@@ -30,7 +30,9 @@ public class AppPagesController {
 	
 	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
 	public static void loadLocationTable(JTable table) {
-		String query = "SELECT * FROM Contrat";
+		String query = "SELECT Contrat.idContrat AS 'No Contrat', Contrat.idClient AS 'No Client', Contrat.idVehicule AS 'No Vehicule', "
+						+ "Contrat.dateDeDepart as 'Date Depart', Contrat.dateDeRetour as 'Date Retour' "
+						+ "FROM Contrat;";
 
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
