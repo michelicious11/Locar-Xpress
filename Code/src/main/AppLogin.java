@@ -26,13 +26,12 @@ public class AppLogin {
 	private JFrame frame;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	
+
 	private String username;
 	private String password;
 	private String prenomEmploye;
-	private int noUtilisateur; 
 	private int noEmploye; 
-	
+
 
 	/**
 	 * Create the login page
@@ -77,7 +76,7 @@ public class AppLogin {
 		logoLbl.setBounds(48, 0, 129, 100);
 		coteDroit.add(logoLbl);
 
-		JLabel welcomeLbl = new JLabel("Welcome, ");
+		JLabel welcomeLbl = new JLabel("Bienvenue, ");
 		welcomeLbl.setFont(new Font("Tahoma", Font.BOLD, 18));
 		welcomeLbl.setBounds(26, 110, 118, 37);
 		coteDroit.add(welcomeLbl);
@@ -99,7 +98,7 @@ public class AppLogin {
 		 * */
 		JButton submitBtn = new JButton("Soumettre");
 		submitBtn.addMouseListener(new MouseAdapter() {
-						
+
 			//utilise la fonction getTypeUtilisateur du AppLoginController pour retourner l'information de la db
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -107,25 +106,25 @@ public class AppLogin {
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
 				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
-				
+
 				switch(AppLoginController.getTypeUtilisateur(username, password)) {
 				case 1:
 					UserPages userPages = new UserPages(); 
 					userPages.setVisible(true);
-					userPages.setWelcomeText("Bienvenue " + prenomEmploye, userPages.getWelcomeLbl());
+					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
 					frame.dispose(); 
 					System.out.println("user");
 					break;
 				case 2:
 					SuperuserPages superuserPages = new SuperuserPages();
-					superuserPages.setWelcomeText("Bienvenue " + prenomEmploye, superuserPages.getWelcomeLbl());
+					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
 					superuserPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("superuser");
 					break;
 				case 3:
 					AdminPages adminPages = new AdminPages();
-					adminPages.setWelcomeText("Bienvenue " + prenomEmploye, adminPages.getWelcomeLbl());
+					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
 					adminPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("admin");
@@ -133,7 +132,7 @@ public class AppLogin {
 				default:
 					System.out.println("erreur");
 				}
-				
+
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);

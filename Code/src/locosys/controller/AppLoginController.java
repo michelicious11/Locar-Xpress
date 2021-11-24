@@ -15,7 +15,7 @@ public class AppLoginController {
 	//methode pour verifier si le nom utilisateur et le mot de passe match avec l'information de la base de donnees
 	public static boolean usernamePasswordCheck(String nomUtilisateurInput, String motDePasseInput) {
 		String query = "SELECT * FROM Utilisateur WHERE nomUtilisateur = '" +  nomUtilisateurInput 
-				+ "' and motDePAsse = '" + motDePasseInput + "'"; 
+				+ "' and motDePasse = '" + motDePasseInput + "'"; 
 
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
@@ -44,7 +44,7 @@ public class AppLoginController {
 		}
 		return 0;
 	}
-	
+	//methode pour avoir le No employe (1 pour user, 2 pour superuser et 3 pour admin)
 	public static int getNoEmploye(String nomUtilisateurInput, String motDePasseInput) {
 
 		if(usernamePasswordCheck(nomUtilisateurInput, motDePasseInput)) {
