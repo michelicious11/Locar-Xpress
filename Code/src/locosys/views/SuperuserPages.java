@@ -20,7 +20,6 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import main.AppLogin;
 import com.toedter.calendar.JDateChooser;
 
 public class SuperuserPages extends JFrame {

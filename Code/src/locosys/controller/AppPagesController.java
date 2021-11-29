@@ -14,20 +14,6 @@ public class AppPagesController {
 	private static String url = "jdbc:sqlite:locosys.db";
 
 
-	//methode pour verifier si le nom utilisateur et le mot de passe match avec l'information de la base de donnees
-	public static String afficherBienvenuePrenomEmploye(int noEmploye) {
-		String query = "SELECT * FROM Employe WHERE idEmploye = '" +  noEmploye + "'";
-
-		try(Connection conn = DriverManager.getConnection(url)) {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			return rs.getString("prenom");
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return "";
-	}
-	
 	//methode pour loader la table dans le jframe du bouton employe du menu Gestion
 	public static void loadLocationTable(JTable table) {
 		String query = "SELECT Contrat.idContrat AS 'No Contrat', Contrat.idClient AS 'No Client', Contrat.idVehicule AS 'No Vehicule', "

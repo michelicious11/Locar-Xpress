@@ -1,4 +1,4 @@
-package main;
+package locosys.views;
 
 import javax.swing.JFrame;
 import java.awt.Dimension;
@@ -6,11 +6,6 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import locosys.views.AdminPages;
-import locosys.views.SuperuserPages;
-import locosys.views.UserPages;
-
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,8 +29,10 @@ public class AppLogin {
 
 
 	/**
-	 * Create the login page
+	 * Creation de la page de Log in et processus d'authentification et d'autorisation 
 	 */
+	
+	
 	public AppLogin() {
 		initialize();
 	}
@@ -105,33 +102,9 @@ public class AppLogin {
 				username = usernameField.getText();
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
-				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
+				prenomEmploye = AppLoginController.afficherBienvenuePrenomEmploye(noEmploye);
 
-				switch(AppLoginController.getTypeUtilisateur(username, password)) {
-				case 1:
-					UserPages userPages = new UserPages(); 
-					userPages.setVisible(true);
-					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
-					frame.dispose(); 
-					System.out.println("user");
-					break;
-				case 2:
-					SuperuserPages superuserPages = new SuperuserPages();
-					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
-					superuserPages.setVisible(true);
-					frame.dispose(); 
-					System.out.println("superuser");
-					break;
-				case 3:
-					AdminPages adminPages = new AdminPages();
-					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
-					adminPages.setVisible(true);
-					frame.dispose(); 
-					System.out.println("admin");
-					break; 
-				default:
-					System.out.println("erreur");
-				}
+				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
 
 			}
 		});
