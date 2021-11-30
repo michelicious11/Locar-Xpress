@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import locosys.views.AdminPages;
@@ -130,7 +131,8 @@ public class AppLogin {
 					System.out.println("admin");
 					break; 
 				default:
-					System.out.println("erreur");
+					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 
 			}
