@@ -1,4 +1,4 @@
-package main;
+package locosys.views;
 
 import javax.swing.JFrame;
 import java.awt.Dimension;
@@ -7,11 +7,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import locosys.views.AdminPages;
-import locosys.views.SuperuserPages;
-import locosys.views.UserPages;
-
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -35,8 +30,10 @@ public class AppLogin {
 
 
 	/**
-	 * Create the login page
+	 * Creation de la page de Log in et processus d'authentification et d'autorisation 
 	 */
+	
+	
 	public AppLogin() {
 		initialize();
 	}
@@ -106,6 +103,11 @@ public class AppLogin {
 				username = usernameField.getText();
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
+<<<<<<< HEAD:Code/src/locosys/views/AppLogin.java
+				prenomEmploye = AppLoginController.afficherBienvenuePrenomEmploye(noEmploye);
+
+				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
+=======
 				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
 
 				switch(AppLoginController.getTypeUtilisateur(username, password)) {
@@ -134,6 +136,7 @@ public class AppLogin {
 					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
 					
 				}
+>>>>>>> main:Code/src/main/AppLogin.java
 
 			}
 		});
