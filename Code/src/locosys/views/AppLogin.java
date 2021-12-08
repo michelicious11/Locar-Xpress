@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
@@ -102,9 +103,40 @@ public class AppLogin {
 				username = usernameField.getText();
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
+<<<<<<< HEAD:Code/src/locosys/views/AppLogin.java
 				prenomEmploye = AppLoginController.afficherBienvenuePrenomEmploye(noEmploye);
 
 				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
+=======
+				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
+
+				switch(AppLoginController.getTypeUtilisateur(username, password)) {
+				case 1:
+					UserPages userPages = new UserPages(); 
+					userPages.setVisible(true);
+					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
+					frame.dispose(); 
+					System.out.println("user");
+					break;
+				case 2:
+					SuperuserPages superuserPages = new SuperuserPages();
+					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
+					superuserPages.setVisible(true);
+					frame.dispose(); 
+					System.out.println("superuser");
+					break;
+				case 3:
+					AdminPages adminPages = new AdminPages();
+					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
+					adminPages.setVisible(true);
+					frame.dispose(); 
+					System.out.println("admin");
+					break; 
+				default:
+					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
+>>>>>>> main:Code/src/main/AppLogin.java
 
 			}
 		});
