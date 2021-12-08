@@ -103,12 +103,9 @@ public class AppLogin {
 				username = usernameField.getText();
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
-<<<<<<< HEAD:Code/src/locosys/views/AppLogin.java
 				prenomEmploye = AppLoginController.afficherBienvenuePrenomEmploye(noEmploye);
-
+				
 				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
-=======
-				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
 
 				switch(AppLoginController.getTypeUtilisateur(username, password)) {
 				case 1:
@@ -136,8 +133,6 @@ public class AppLogin {
 					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
 					
 				}
->>>>>>> main:Code/src/main/AppLogin.java
-
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);
