@@ -1,8 +1,8 @@
 package main;
 
 import java.awt.EventQueue;
-import locosys.controller.AppLoginController;
-import locosys.views.AdminPages;
+import locosys.views.AppLogin;
+
 
 public class Main {
 
@@ -10,12 +10,8 @@ public class Main {
 	 * Create the database.
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
 
-
-			System.out.println(ConnectionBD.readDB());
-
-		
+	public static void main(String[] args) {	
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

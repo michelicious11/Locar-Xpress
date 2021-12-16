@@ -26,13 +26,6 @@ public class ContratLocation {
 		this.paiementCredit = paiementCredit; 		
 	}
 	
-	public double calculateDuree(LocalDateTime dateHeureDepart, LocalDateTime dateHeureRetour) {
-		return 1;
-	}
-	
-	public double calculateMontantBase(int duree) {
-		return 1;
-	}
 
 	public int getContratID() {
 		return contratID;

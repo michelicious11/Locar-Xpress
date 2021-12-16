@@ -1,16 +1,12 @@
-package main;
+package locosys.views;
 
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import locosys.views.AdminPages;
-import locosys.views.SuperuserPages;
-import locosys.views.UserPages;
-
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,17 +22,18 @@ public class AppLogin {
 	private JFrame frame;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	
+
 	private String username;
 	private String password;
 	private String prenomEmploye;
-	private int noUtilisateur; 
 	private int noEmploye; 
-	
+
 
 	/**
-	 * Create the login page
+	 * Creation de la page de Log in et processus d'authentification et d'autorisation 
 	 */
+	
+	
 	public AppLogin() {
 		initialize();
 	}
@@ -77,7 +74,7 @@ public class AppLogin {
 		logoLbl.setBounds(48, 0, 129, 100);
 		coteDroit.add(logoLbl);
 
-		JLabel welcomeLbl = new JLabel("Welcome, ");
+		JLabel welcomeLbl = new JLabel("Bienvenue, ");
 		welcomeLbl.setFont(new Font("Tahoma", Font.BOLD, 18));
 		welcomeLbl.setBounds(26, 110, 118, 37);
 		coteDroit.add(welcomeLbl);
@@ -99,41 +96,43 @@ public class AppLogin {
 		 * */
 		JButton submitBtn = new JButton("Soumettre");
 		submitBtn.addMouseListener(new MouseAdapter() {
-						
+
 			//utilise la fonction getTypeUtilisateur du AppLoginController pour retourner l'information de la db
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				username = usernameField.getText();
 				password = passwordField.getText();
 				noEmploye = AppLoginController.getNoEmploye(username, password); 
-				prenomEmploye = AppPagesController.afficherBienvenuePrenomEmploye(noEmploye);
+				prenomEmploye = AppLoginController.afficherBienvenuePrenomEmploye(noEmploye);
 				
+				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
+
 				switch(AppLoginController.getTypeUtilisateur(username, password)) {
 				case 1:
 					UserPages userPages = new UserPages(); 
 					userPages.setVisible(true);
-					userPages.setWelcomeText("Bienvenue " + prenomEmploye, userPages.getWelcomeLbl());
+					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
 					frame.dispose(); 
 					System.out.println("user");
 					break;
 				case 2:
 					SuperuserPages superuserPages = new SuperuserPages();
-					superuserPages.setWelcomeText("Bienvenue " + prenomEmploye, superuserPages.getWelcomeLbl());
+					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
 					superuserPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("superuser");
 					break;
 				case 3:
 					AdminPages adminPages = new AdminPages();
-					adminPages.setWelcomeText("Bienvenue " + prenomEmploye, adminPages.getWelcomeLbl());
+					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
 					adminPages.setVisible(true);
 					frame.dispose(); 
 					System.out.println("admin");
 					break; 
 				default:
-					System.out.println("erreur");
+					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
-				
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);

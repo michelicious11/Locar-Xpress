@@ -9,5 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="sqlite-jdbc-3.36.0.3.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
