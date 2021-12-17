@@ -68,13 +68,13 @@ public class AdminPages extends JFrame {
 		 * Les elements des cartes
 		 * */
 
-		JLayeredPane pnlCards = new JLayeredPane();
+		final JLayeredPane pnlCards = new JLayeredPane();
 		pnlCards.setBounds(222, 79, 579, 399);
 		getContentPane().add(pnlCards);
 		pnlCards.setLayout(null);
 
 		//card 1 (tableau de bord)
-		JPanel dashTab = new JPanel();
+		final JPanel dashTab = new JPanel();
 		dashTab.setBounds(0, 0, 579, 399);
 		dashTab.setBackground(new Color(112,146,190));
 		pnlCards.add(dashTab);
@@ -101,7 +101,7 @@ public class AdminPages extends JFrame {
 		dashTab.add(btnMenuLocations);
 		
 		//card 2 (clients)		
-		JPanel clientsTab = new JPanel();
+		final JPanel clientsTab = new JPanel();
 		clientsTab.setVisible(false);
 		clientsTab.setBounds(0, 0, 579, 399);
 		clientsTab.setBackground(new Color(112,146,190));
@@ -129,7 +129,7 @@ public class AdminPages extends JFrame {
 		clientsMenuBtn.setBounds(349, 31, 213, 35);
 		
 		//card 3 (vehicules)
-		JPanel vehiculesTab = new JPanel();
+		final JPanel vehiculesTab = new JPanel();
 		vehiculesTab.setVisible(false);
 		clientsTab.add(clientsMenuBtn);
 		vehiculesTab.setBounds(0, 0, 579, 399);
@@ -163,7 +163,7 @@ public class AdminPages extends JFrame {
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 		
 		//card 4 (utilisateurs)
-		JPanel usersTab = new JPanel();
+		final JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
 		usersTab.setBackground(new Color(112,146,190));
@@ -192,7 +192,7 @@ public class AdminPages extends JFrame {
 		usersTab.add(utilisateursMenuBtn);
 		
 		//card 5 (gestion)
-		JPanel gestionTab = new JPanel();
+		final JPanel gestionTab = new JPanel();
 		gestionTab.setVisible(false);
 		
 		gestionTab.setBounds(0, 0, 579, 399);
