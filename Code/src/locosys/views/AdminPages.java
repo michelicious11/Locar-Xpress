@@ -40,7 +40,6 @@ public class AdminPages extends JFrame {
 		return welcomeLbl;
 	}
 
-
 	public void setWelcomeLbl(JLabel label, String welcomeLblText) {
 		label.setText(welcomeLblText);
 	}
