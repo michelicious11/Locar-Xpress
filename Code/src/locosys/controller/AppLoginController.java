@@ -98,24 +98,19 @@ public class AppLoginController {
 			userPages.setVisible(true);
 			userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
 			frame.dispose(); 
-			System.out.println("user");
 			break;
 		case 2:
 			SuperuserPages superuserPages = new SuperuserPages();
 			superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
 			superuserPages.setVisible(true);
 			frame.dispose(); 
-			System.out.println("superuser");
 			break;
 		case 3:
 			AdminPages adminPages = new AdminPages();
 			adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
 			adminPages.setVisible(true);
 			frame.dispose(); 
-			System.out.println("admin");
 			break; 
-		default:
-			System.out.println("erreur");
 		}
 	}
 	

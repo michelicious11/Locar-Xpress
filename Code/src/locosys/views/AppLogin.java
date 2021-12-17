@@ -89,7 +89,9 @@ public class AppLogin {
 		passwordLbl.setLabelFor(passwordField);
 		passwordField.setBounds(48, 212, 129, 19);
 		coteDroit.add(passwordField);
-
+		
+		String messageErreur = "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n "
+								+ "Veuillez essayer de nouveau ou contacter votre administrateur.";
 
 		/*
 		 * Ouvre la fenetre de l'application dependamment le type d'utilisateurs
@@ -107,32 +109,6 @@ public class AppLogin {
 				
 				AppLoginController.authorizationMethod(username, password, prenomEmploye, frame);
 
-				switch(AppLoginController.getTypeUtilisateur(username, password)) {
-				case 1:
-					UserPages userPages = new UserPages(); 
-					userPages.setVisible(true);
-					userPages.setWelcomeText("Bienvenue, " + prenomEmploye, userPages.getWelcomeLbl());
-					frame.dispose(); 
-					System.out.println("user");
-					break;
-				case 2:
-					SuperuserPages superuserPages = new SuperuserPages();
-					superuserPages.setWelcomeText("Bienvenue, " + prenomEmploye, superuserPages.getWelcomeLbl());
-					superuserPages.setVisible(true);
-					frame.dispose(); 
-					System.out.println("superuser");
-					break;
-				case 3:
-					AdminPages adminPages = new AdminPages();
-					adminPages.setWelcomeText("Bienvenue, " + prenomEmploye, adminPages.getWelcomeLbl());
-					adminPages.setVisible(true);
-					frame.dispose(); 
-					System.out.println("admin");
-					break; 
-				default:
-					JOptionPane.showMessageDialog(null, "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n Veuillez essayer de nouveau ou contacter votre administrateur.", "Message d'erreur", JOptionPane.INFORMATION_MESSAGE);
-					
-				}
 			}
 		});
 		submitBtn.setBounds(58, 241, 107, 29);
