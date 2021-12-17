@@ -22,6 +22,8 @@ import java.awt.event.MouseEvent;
 
 import com.toedter.calendar.JDateChooser;
 
+import locosys.controller.AppPagesController;
+
 public class SuperuserPages extends JFrame {
 
 	//Tables des cards (gestion en a pas)
@@ -48,6 +50,7 @@ public class SuperuserPages extends JFrame {
 	public SuperuserPages() {
 		superuserPages = this; //pour que this soit l'instance de adminPages
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		superuserPages.setTitle("Superuser");
 		setBounds(100, 100, 815, 602);
 		getContentPane().setLayout(null);
 		this.setLocationRelativeTo(null);
@@ -73,37 +76,7 @@ public class SuperuserPages extends JFrame {
 		dashTab.setLayout(null);
 
 		locationsTable = new JTable();
-		locationsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Client", "No Vehicule", "Date depart", "Date retour", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		locationsTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		locationsTable.getColumnModel().getColumn(0).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		locationsTable.getColumnModel().getColumn(1).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(2).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(3).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(4).setMinWidth(20);
-		locationsTable.setBounds(47, 109, 466, 251);
-
+		AppPagesController.loadLocationTable(locationsTable);
 		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
 		locationsScrollPane.setBounds(23, 85, 530, 302);
 		dashTab.add(locationsScrollPane);
@@ -159,32 +132,7 @@ public class SuperuserPages extends JFrame {
 		clientsTab.add(clientsScrollPane);
 
 		clientsTable = new JTable();
-		clientsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-				},
-				new String[] {
-						"No", "Prenom", "Nom", "Telephone", "Adresse", "Date naissance", "Permis", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, String.class, String.class, String.class, String.class, Object.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		clientsTable.getColumnModel().getColumn(0).setPreferredWidth(34);
-		clientsTable.getColumnModel().getColumn(1).setPreferredWidth(66);
-		clientsTable.getColumnModel().getColumn(2).setPreferredWidth(61);
-		clientsTable.getColumnModel().getColumn(3).setPreferredWidth(91);
-		clientsTable.getColumnModel().getColumn(4).setPreferredWidth(108);
-		clientsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-		clientsTable.getColumnModel().getColumn(6).setPreferredWidth(52);
+		AppPagesController.loadClientsTable(clientsTable);
 		clientsScrollPane.setViewportView(clientsTable);
 
 		JSeparator separatorClients = new JSeparator();
@@ -236,37 +184,9 @@ public class SuperuserPages extends JFrame {
 		vehiculesTab.add(vehiculesScrollPane);
 
 		vehiculesTable = new JTable();
-		vehiculesTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Vehicule", "Type", "Marque", "Couleur", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Integer.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		vehiculesTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		vehiculesTable.getColumnModel().getColumn(0).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		vehiculesTable.getColumnModel().getColumn(1).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(2).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(3).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(4).setMinWidth(20);
-		vehiculesTable.setBounds(47, 109, 466, 251);
+		AppPagesController.loadVehiculesTable(vehiculesTable);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
+
 
 		JLabel vehiculesLbl = new JLabel("Vehicules");
 		vehiculesLbl.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -282,6 +202,11 @@ public class SuperuserPages extends JFrame {
 		usersTab.setBackground(new Color(112,146,190));
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
+		
+		/*
+		 * card 4 (utilisateurs)
+		 * 
+		 * */
 
 		//Changement du nom de la page pour Utilisateurs
 		JLabel usersLbl = new JLabel("Utilisateurs");
@@ -306,8 +231,14 @@ public class SuperuserPages extends JFrame {
 		JButton deconnexionBtn = new JButton("Se deconnecter");
 		deconnexionBtn.setBounds(77, 127, 253, 58);
 		panelCentreUsers.add(deconnexionBtn);
+		
+		/*
+		 * card 5 (gestion)
+		 * 
+		 */
 		JPanel gestionTab = new JPanel();
 		gestionTab.setVisible(false);
+		
 		gestionTab.setBounds(0, 0, 579, 399);
 		gestionTab.setBackground(new Color(112,146,190));
 		pnlCards.add(gestionTab);
@@ -324,6 +255,13 @@ public class SuperuserPages extends JFrame {
 		panelCentreGestion.add(modalitesLocationGestionBtn);
 
 		JButton employesGestionBtn = new JButton("Employes");
+		employesGestionBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EmployeGestionPage employePage = EmployeGestionPage.getInstance();
+				employePage.getEmployeGestionPage().setVisible(true); 
+			}
+		});
 		employesGestionBtn.setBounds(100, 85, 205, 50);
 		panelCentreGestion.add(employesGestionBtn);
 
@@ -335,8 +273,6 @@ public class SuperuserPages extends JFrame {
 		soumissionGestionBtn.setBounds(100, 209, 205, 50);
 		panelCentreGestion.add(soumissionGestionBtn);
 
-
-		//Changement du nom de la page pour Gestion
 		JLabel gestionLbl = new JLabel("Gestion");
 		gestionLbl.setFont(new Font("Dialog", Font.BOLD, 15));
 		gestionLbl.setBounds(12, 0, 171, 49);
@@ -345,18 +281,6 @@ public class SuperuserPages extends JFrame {
 		JSeparator separatorGestion = new JSeparator();
 		separatorGestion.setBounds(12, 34, 139, 14);
 		gestionTab.add(separatorGestion);
-
-
-		/*
-		 * card 4 (utilisateurs)
-		 * 
-		 * */
-
-
-		/*
-		 * card 5 (gestion)
-		 * 
-		 */
 
 
 		/**
