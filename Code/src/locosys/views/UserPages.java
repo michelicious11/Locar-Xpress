@@ -66,22 +66,17 @@ public class UserPages extends JFrame {
 		pnlCards.setLayout(null);
 
 
-		/*
-		 * card 1 (tableau de bord)
-		 * 
-		 */
 		final JPanel dashTab = new JPanel();
 		dashTab.setBounds(0, 0, 579, 399);
 		dashTab.setBackground(new Color(112,146,190));
 		pnlCards.add(dashTab);
 		dashTab.setLayout(null);
-		
-		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
-		locationsScrollPane.setBounds(23, 85, 530, 302);
-		dashTab.add(locationsScrollPane);
 
 		locationsTable = new JTable();
 		AppPagesController.loadLocationTable(locationsTable);
+		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
+		locationsScrollPane.setBounds(23, 85, 530, 302);
+		dashTab.add(locationsScrollPane);
 
 		JTextPane noClientInputDash = new JTextPane();
 		noClientInputDash.setBounds(23, 49, 85, 24);
@@ -113,10 +108,8 @@ public class UserPages extends JFrame {
 		separatorDash.setBounds(23, 28, 139, 14);
 		dashTab.add(separatorDash);
 
-		/*
-		 * card 2 (clients)
-		 * 		
-		 */
+		//card 2 (clients)
+
 		final JPanel clientsTab = new JPanel();
 		clientsTab.setVisible(false);
 		clientsTab.setBounds(0, 0, 579, 399);
@@ -235,6 +228,10 @@ public class UserPages extends JFrame {
 		JButton deconnexionBtn = new JButton("Se deconnecter");
 		deconnexionBtn.setBounds(77, 127, 253, 58);
 		panelCentreUsers.add(deconnexionBtn);
+		
+		
+		
+		
 
 		/**
 		 * 
