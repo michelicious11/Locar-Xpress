@@ -90,9 +90,6 @@ public class AppLogin {
 		passwordField.setBounds(48, 212, 129, 19);
 		coteDroit.add(passwordField);
 		
-		String messageErreur = "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n "
-								+ "Veuillez essayer de nouveau ou contacter votre administrateur.";
-
 		/*
 		 * Ouvre la fenetre de l'application dependamment le type d'utilisateurs
 		 * */
