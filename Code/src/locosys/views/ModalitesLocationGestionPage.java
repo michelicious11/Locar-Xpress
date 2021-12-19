@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import locosys.controller.AppPagesController;
 import locosys.controller.ContratLocationController;
 import locosys.controller.EmployeGestionPageController;
+import locosys.models.Modalites;
 
 import javax.swing.JScrollPane;
 import java.awt.Label;
@@ -66,7 +67,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 	   private JTextField modalitesLocationCautionEnEspecesField;
 
 	   //Get the only object available
-	   public static ModalitesLocationGestionPage getInstance(){
+	   public static ModalitesLocationGestionPage getInstance() {
 	      return instance;
 	   }
 
@@ -87,7 +88,6 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationGestionPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		modalitesLocationGestionPage.setLocationRelativeTo(null);
 		modalitesLocationGestionPage.getContentPane().setLayout(null);
-		//ResultSet prixDeBase = EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase");
 		
 		
 		JPanel panelModalitesLocation = new JPanel();
@@ -111,11 +111,11 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationClasseEconomiqueLbl.setFont(new Font("Yu Gothic", Font.BOLD, 13));
 		modalitesLocationClasseEconomiqueLbl.setBounds(10, 57, 141, 19);
 		panelModalitesLocation.add(modalitesLocationClasseEconomiqueLbl);
-		
+	
 		modalitesLocationClasseEconomiqueField = new JTextField();
 		modalitesLocationClasseEconomiqueLbl.setLabelFor(modalitesLocationClasseEconomiqueField);
 		modalitesLocationClasseEconomiqueField.setBounds(190, 54, 129, 19);
-		modalitesLocationClasseEconomiqueField.setText(EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase", 1));
+		modalitesLocationClasseEconomiqueField.setText(Double.toString(Modalites.getPrixClasseEconomique()));
 		panelModalitesLocation.add(modalitesLocationClasseEconomiqueField);
 		modalitesLocationClasseEconomiqueField.setColumns(10);
 		
@@ -128,7 +128,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationClasseMoyenneField = new JTextField();
 		modalitesLocationClasseMoyenneLbl.setLabelFor(modalitesLocationClasseMoyenneField);
 		modalitesLocationClasseMoyenneField.setBounds(190, 89, 129, 19);
-		modalitesLocationClasseMoyenneField.setText(EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase", 2));
+		modalitesLocationClasseMoyenneField.setText(Double.toString(Modalites.getPrixClasseMoyenne()));
 		panelModalitesLocation.add(modalitesLocationClasseMoyenneField);
 		modalitesLocationClasseMoyenneField.setColumns(10);
 		
@@ -141,7 +141,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationClasseConfortField = new JTextField();
 		modalitesLocationClasseConfortLbl.setLabelFor(modalitesLocationClasseConfortField);
 		modalitesLocationClasseConfortField.setBounds(190, 119, 129, 19);
-		modalitesLocationClasseConfortField.setText(EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase", 1));
+		modalitesLocationClasseConfortField.setText(Double.toString(Modalites.getPrixClasseConfort()));
 		panelModalitesLocation.add(modalitesLocationClasseConfortField);
 		modalitesLocationClasseConfortField.setColumns(10);
 			
@@ -154,7 +154,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationClasseLuxeField = new JTextField();
 		modalitesLocationClasseLuxeLbl.setLabelFor(modalitesLocationClasseLuxeField);
 		modalitesLocationClasseLuxeField.setBounds(190, 148, 129, 19);
-		modalitesLocationClasseLuxeField.setText(EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase", 1));
+		modalitesLocationClasseLuxeField.setText(Double.toString(Modalites.getPrixClasseLuxe()));
 		panelModalitesLocation.add(modalitesLocationClasseLuxeField);
 		modalitesLocationClasseLuxeField.setColumns(10);		
 		
@@ -167,7 +167,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationClasseUtilitaireField = new JTextField();
 		modalitesLocationClasseUtilitaireLbl.setLabelFor(modalitesLocationClasseUtilitaireField);
 		modalitesLocationClasseUtilitaireField.setBounds(190, 177, 129, 19);
-		modalitesLocationClasseUtilitaireField.setText(EmployeGestionPageController.getPrixContrat("TypeVehicule" , "prixDeBase", 1));
+		modalitesLocationClasseUtilitaireField.setText(Double.toString(Modalites.getPrixClasseUtilitaire()));
 		panelModalitesLocation.add(modalitesLocationClasseUtilitaireField);
 		modalitesLocationClasseUtilitaireField.setColumns(10);
 		
@@ -181,11 +181,13 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationFraisUsureForfait1ArgentField = new JTextField();
 		modalitesLocationFraisUsureForfait1ArgentField.setColumns(10);
 		modalitesLocationFraisUsureForfait1ArgentField.setBounds(190, 275, 62, 19);
+		modalitesLocationFraisUsureForfait1ArgentField.setText(Double.toString(Modalites.getFraisUsureForfait1Argent()));
 		panelModalitesLocation.add(modalitesLocationFraisUsureForfait1ArgentField);
 		
 		modalitesLocationFraisUsureForfait1KmField = new JTextField();
 		modalitesLocationFraisUsureForfait1KmField.setColumns(10);
 		modalitesLocationFraisUsureForfait1KmField.setBounds(257, 275, 62, 19);
+		modalitesLocationFraisUsureForfait1KmField.setText(Double.toString(Modalites.getFraisUsureForfait1Km()));
 		panelModalitesLocation.add(modalitesLocationFraisUsureForfait1KmField);
 		
 ////////////////// Frais d'usures forfait 2 //////////////////////////////////////////////
@@ -198,11 +200,13 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationFraisUsureForfait2ArgentField = new JTextField();
 		modalitesLocationFraisUsureForfait2ArgentField.setColumns(10);
 		modalitesLocationFraisUsureForfait2ArgentField.setBounds(190, 307, 62, 19);
+		modalitesLocationFraisUsureForfait2ArgentField.setText(Double.toString(Modalites.getFraisUsureForfait2Argent()));
 		panelModalitesLocation.add(modalitesLocationFraisUsureForfait2ArgentField);
 		
 		modalitesLocationFraisUsureForfait2KmField = new JTextField();
 		modalitesLocationFraisUsureForfait2KmField.setColumns(10);
 		modalitesLocationFraisUsureForfait2KmField.setBounds(257, 307, 62, 19);
+		modalitesLocationFraisUsureForfait2KmField.setText(Double.toString(Modalites.getFraisUsureForfait2Km()));
 		panelModalitesLocation.add(modalitesLocationFraisUsureForfait2KmField);
 		
 ////////////////// Frais d'essences //////////////////////////////////////////////////////
@@ -215,6 +219,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationFraisEssenceLbl.setLabelFor(modalitesLocationFraisEssenceField);
 		modalitesLocationFraisEssenceField.setColumns(10);
 		modalitesLocationFraisEssenceField.setBounds(190, 336, 129, 19);
+		modalitesLocationFraisEssenceField.setText(Double.toString(Modalites.getFraisEssence()));
 		panelModalitesLocation.add(modalitesLocationFraisEssenceField);
 		
 ////////////////// Frais d'assurances //////////////////////////////////////////////////////
@@ -227,18 +232,21 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationFraisAssuranceLbl.setLabelFor(modalitesLocationFraisAssuranceField);
 		modalitesLocationFraisAssuranceField.setColumns(10);
 		modalitesLocationFraisAssuranceField.setBounds(190, 365, 129, 19);
+		modalitesLocationFraisAssuranceField.setText(Double.toString(Modalites.getFraisAssurance()));
 		panelModalitesLocation.add(modalitesLocationFraisAssuranceField);
 		
 ////////////////// Taxes provinciales //////////////////////////////////////////////////////
 		modalitesLocationTaxesProvincialesLbl = new JLabel("Taxes provinciales");
 		modalitesLocationTaxesProvincialesLbl.setFont(new Font("Yu Gothic", Font.BOLD, 13));
 		modalitesLocationTaxesProvincialesLbl.setBounds(10, 498, 170, 22);
+		
 		panelModalitesLocation.add(modalitesLocationTaxesProvincialesLbl);
 		
 		modalitesLocationTaxesProvincialesField = new JTextField();
 		modalitesLocationTaxesProvincialesLbl.setLabelFor(modalitesLocationTaxesProvincialesField);
 		modalitesLocationTaxesProvincialesField.setColumns(10);
 		modalitesLocationTaxesProvincialesField.setBounds(190, 495, 129, 22);
+		modalitesLocationTaxesProvincialesField.setText(Double.toString(Modalites.getTaxesProvinciales()));
 		panelModalitesLocation.add(modalitesLocationTaxesProvincialesField);
 		
 ////////////////// Taxes fédérales //////////////////////////////////////////////////////
@@ -251,6 +259,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationTaxesFederalesLbl.setLabelFor(modalitesLocationTaxesFederalesField);
 		modalitesLocationTaxesFederalesField.setColumns(10);
 		modalitesLocationTaxesFederalesField.setBounds(190, 527, 129, 19);
+		modalitesLocationTaxesFederalesField.setText(Double.toString(Modalites.getTaxesFederales()));
 		panelModalitesLocation.add(modalitesLocationTaxesFederalesField);
 		
 ////////////////// Caution en espèces //////////////////////////////////////////////////////
@@ -263,6 +272,7 @@ public class ModalitesLocationGestionPage extends JFrame {
 		modalitesLocationCautionEnEspecesLbl.setLabelFor(modalitesLocationCautionEnEspecesField);
 		modalitesLocationCautionEnEspecesField.setColumns(10);
 		modalitesLocationCautionEnEspecesField.setBounds(190, 556, 129, 19);
+		modalitesLocationCautionEnEspecesField.setText(Double.toString(Modalites.getCautionEnEspeces()));
 		panelModalitesLocation.add(modalitesLocationCautionEnEspecesField);
 		
 ////////////////// Séparateur //////////////////////////////////////////////////////
