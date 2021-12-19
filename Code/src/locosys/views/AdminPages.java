@@ -273,7 +273,7 @@ public class AdminPages extends JFrame {
 			}
 		});
 		
-		reservationBtn.setBounds(100, 100, 115, 100);
+		reservationBtn.setBounds(31, 24, 115, 44);
 		topBar.add(reservationBtn);
 		reservationBtn.addMouseListener(new MouseAdapter() {
 			@Override
