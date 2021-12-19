@@ -222,9 +222,18 @@ public class AdminPages extends JFrame {
 		panelCentreGestion.add(employesGestionBtn);
 
 		JButton rapportsGestionBtn = new JButton("Rapports");
+		rapportsGestionBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FormulaireDepart formulaireDepart = FormulaireDepart.getInstance();
+				formulaireDepart.getFormulaireDepart();
+			}
+		});
 		rapportsGestionBtn.setBounds(100, 147, 205, 50);
 		panelCentreGestion.add(rapportsGestionBtn);
 
+		
+		
 		JButton soumissionGestionBtn = new JButton("Soumissions");
 		soumissionGestionBtn.setBounds(100, 209, 205, 50);
 		panelCentreGestion.add(soumissionGestionBtn);
