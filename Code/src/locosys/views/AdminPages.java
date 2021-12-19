@@ -229,13 +229,7 @@ public class AdminPages extends JFrame {
 		panelCentreGestion.add(employesGestionBtn);
 
 		JButton rapportsGestionBtn = new JButton("Rapports");
-		rapportsGestionBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				FormulaireDepart formulaireDepart = FormulaireDepart.getInstance();
-				formulaireDepart.getFormulaireDepart();
-			}
-		});
+	
 		rapportsGestionBtn.setBounds(100, 147, 205, 50);
 		panelCentreGestion.add(rapportsGestionBtn);
 
@@ -278,9 +272,17 @@ public class AdminPages extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		reservationBtn.setBounds(31, 24, 115, 44);
+		
+		reservationBtn.setBounds(100, 100, 115, 100);
 		topBar.add(reservationBtn);
-
+		reservationBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FormulaireDepart formulaireDepart = FormulaireDepart.getInstance();
+				formulaireDepart.getFormulaireDepart();
+			}
+		});
+		
 		JButton cueilletteBtn = new JButton("Cueillette");
 		cueilletteBtn.addMouseListener(new MouseAdapter() {
 			@Override
