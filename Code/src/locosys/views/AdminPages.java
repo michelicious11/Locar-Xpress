@@ -100,6 +100,8 @@ public class AdminPages extends JFrame {
 		btnMenuLocations.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				LocationsMenu locationsMenu = LocationsMenu.getInstance();
+				locationsMenu.getLocationsMenu().setVisible(true);
 			}
 		});
 		btnMenuLocations.setBounds(340, 28, 213, 35);
@@ -168,6 +170,8 @@ public class AdminPages extends JFrame {
 		btnMenuVehicules.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				LocationsMenu locationsMenu = LocationsMenu.getInstance();
+				locationsMenu.getLocationsMenu().setVisible(true);
 			}
 		});
 		btnMenuVehicules.setBounds(340, 26, 213, 35);

@@ -1,7 +1,5 @@
 package locosys.views;
 
-package locosys.views;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
@@ -13,25 +11,27 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import locosys.controller.AppPagesController;
+import locosys.controller.LocationsMenuController;
+
 import javax.swing.JScrollPane;
 import java.awt.Font;
 
 public class LocationsMenu extends JFrame {
 
-	private JFrame LocationsMenu;
+	private JFrame locationsMenu;
 
 	public JFrame getLocationsMenu() {
-		return LocationsMenu;
+		return locationsMenu;
 	}
 
 	public void setLocationsMenu(JFrame LocationsMenu) {
-		this.LocationsMenu = LocationsMenu;
+		this.locationsMenu = LocationsMenu;
 	}
 
-	private JButton addEmployeeBtn;
-	private JButton editEmployeeBtn;
-	private JLabel employeLbl;
-	private JTable employeTable;
+	private JButton addLocationBtn;
+	private JButton editLocationBtn;
+	private JLabel locationLbl;
+	private JTable locationsTable;
 
 	//create an object of SingleObject
 	private static LocationsMenu instance = new LocationsMenu();
@@ -52,53 +52,53 @@ public class LocationsMenu extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		LocationsMenu = this; 
-		LocationsMenu = new JFrame();
-		LocationsMenu.setBounds(100, 100, 630, 495);
-		LocationsMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		LocationsMenu.setLocationRelativeTo(null);
-		LocationsMenu.getContentPane().setLayout(null);
+		locationsMenu = this; 
+		locationsMenu = new JFrame();
+		locationsMenu.setBounds(100, 100, 630, 495);
+		locationsMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		locationsMenu.setLocationRelativeTo(null);
+		locationsMenu.getContentPane().setLayout(null);
 
-		JPanel panelEmploye = new JPanel();
-		panelEmploye.setBackground(new Color(112,146,190));
-		panelEmploye.setBounds(0, 0, 616, 458);
-		LocationsMenu.getContentPane().add(panelEmploye);
-		panelEmploye.setLayout(null);
+		JPanel panelLocations = new JPanel();
+		panelLocations.setBackground(new Color(112,146,190));
+		panelLocations.setBounds(0, 0, 616, 458);
+		locationsMenu.getContentPane().add(panelLocations);
+		panelLocations.setLayout(null);
 
-		employeLbl = new JLabel("Employes");
-		employeLbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		employeLbl.setBounds(67, 10, 135, 32);
-		panelEmploye.add(employeLbl);
+		locationLbl = new JLabel("Locations");
+		locationLbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		locationLbl.setBounds(67, 10, 135, 32);
+		panelLocations.add(locationLbl);
 
-		JScrollPane employeScrollPane = new JScrollPane(employeTable);
-		employeScrollPane.setBounds(67, 52, 479, 303);
-		panelEmploye.add(employeScrollPane);
+		JScrollPane locationScrollPane = new JScrollPane(locationsTable);
+		locationScrollPane.setBounds(67, 52, 479, 303);
+		panelLocations.add(locationScrollPane);
 
-		employeTable = new JTable();
-		AppPagesController.loadEmployeeTable(employeTable);
-		employeScrollPane.setViewportView(employeTable);
+		locationsTable = new JTable();
+		LocationsMenuController.loadLocationsTable(locationsTable);
+		locationScrollPane.setViewportView(locationsTable);
 		
-		addEmployeeBtn = new JButton("Ajouter");
-		addEmployeeBtn.addMouseListener(new MouseAdapter() {
+		addLocationBtn = new JButton("Ajouter");
+		addLocationBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				EmployeAjout employeAjout = EmployeAjout.getInstance(employeTable);
+				EmployeAjout employeAjout = EmployeAjout.getInstance(locationsTable);
 				employeAjout.getEmployeAjout().setVisible(true);		
 			}
 		});
-		addEmployeeBtn.setBounds(145, 392, 147, 41);
-		panelEmploye.add(addEmployeeBtn);
+		addLocationBtn.setBounds(145, 392, 147, 41);
+		panelLocations.add(addLocationBtn);
 
-		editEmployeeBtn = new JButton("Modifier");
-		editEmployeeBtn.addMouseListener(new MouseAdapter() {
+		editLocationBtn = new JButton("Modifier");
+		editLocationBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				EmployeEdit employeEdit = EmployeEdit.getInstance(employeTable);
+				EmployeEdit employeEdit = EmployeEdit.getInstance(locationsTable);
 				employeEdit.getEmployeEdit().setVisible(true);	
 			}
 		});
-		editEmployeeBtn.setBounds(320, 392, 147, 41);
-		panelEmploye.add(editEmployeeBtn);
+		editLocationBtn.setBounds(320, 392, 147, 41);
+		panelLocations.add(editLocationBtn);
 	}
 }
 
