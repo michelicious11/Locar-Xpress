@@ -22,6 +22,8 @@ import java.awt.event.MouseEvent;
 
 import com.toedter.calendar.JDateChooser;
 
+import locosys.controller.AppPagesController;
+
 public class UserPages extends JFrame {
 
 	//Tables des cards (gestion en a pas)
@@ -58,54 +60,20 @@ public class UserPages extends JFrame {
 		 * Les elements des cartes
 		 * */
 
-		JLayeredPane pnlCards = new JLayeredPane();
+		final JLayeredPane pnlCards = new JLayeredPane();
 		pnlCards.setBounds(222, 79, 579, 399);
 		getContentPane().add(pnlCards);
 		pnlCards.setLayout(null);
 
 
-		/*
-		 * card 1 (tableau de bord)
-		 * 
-		 */
-		JPanel dashTab = new JPanel();
+		final JPanel dashTab = new JPanel();
 		dashTab.setBounds(0, 0, 579, 399);
 		dashTab.setBackground(new Color(112,146,190));
 		pnlCards.add(dashTab);
 		dashTab.setLayout(null);
 
 		locationsTable = new JTable();
-		locationsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Client", "No Vehicule", "Date depart", "Date retour", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		locationsTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		locationsTable.getColumnModel().getColumn(0).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		locationsTable.getColumnModel().getColumn(1).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(2).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(3).setMinWidth(20);
-		locationsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		locationsTable.getColumnModel().getColumn(4).setMinWidth(20);
-		locationsTable.setBounds(47, 109, 466, 251);
-
+		AppPagesController.loadLocationTable(locationsTable);
 		JScrollPane locationsScrollPane = new JScrollPane(locationsTable);
 		locationsScrollPane.setBounds(23, 85, 530, 302);
 		dashTab.add(locationsScrollPane);
@@ -140,11 +108,9 @@ public class UserPages extends JFrame {
 		separatorDash.setBounds(23, 28, 139, 14);
 		dashTab.add(separatorDash);
 
-		/*
-		 * card 2 (clients)
-		 * 		
-		 */
-		JPanel clientsTab = new JPanel();
+		//card 2 (clients)
+
+		final JPanel clientsTab = new JPanel();
 		clientsTab.setVisible(false);
 		clientsTab.setBounds(0, 0, 579, 399);
 		clientsTab.setBackground(new Color(112,146,190));
@@ -161,33 +127,9 @@ public class UserPages extends JFrame {
 		clientsTab.add(clientsScrollPane);
 
 		clientsTable = new JTable();
-		clientsTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null, null},
-				},
-				new String[] {
-						"No", "Prenom", "Nom", "Telephone", "Adresse", "Date naissance", "Permis", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, String.class, String.class, String.class, String.class, Object.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		clientsTable.getColumnModel().getColumn(0).setPreferredWidth(34);
-		clientsTable.getColumnModel().getColumn(1).setPreferredWidth(66);
-		clientsTable.getColumnModel().getColumn(2).setPreferredWidth(61);
-		clientsTable.getColumnModel().getColumn(3).setPreferredWidth(91);
-		clientsTable.getColumnModel().getColumn(4).setPreferredWidth(108);
-		clientsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-		clientsTable.getColumnModel().getColumn(6).setPreferredWidth(52);
+		AppPagesController.loadClientsTable(clientsTable);
 		clientsScrollPane.setViewportView(clientsTable);
+
 
 		JSeparator separatorClients = new JSeparator();
 		separatorClients.setBounds(22, 31, 127, 16);
@@ -226,7 +168,7 @@ public class UserPages extends JFrame {
 		 * card 3 (vehicules)
 		 * 
 		 * */
-		JPanel vehiculesTab = new JPanel();
+		final JPanel vehiculesTab = new JPanel();
 		vehiculesTab.setVisible(false);
 		vehiculesTab.setBounds(0, 0, 579, 399);
 		vehiculesTab.setBackground(new Color(112,146,190));
@@ -238,36 +180,7 @@ public class UserPages extends JFrame {
 		vehiculesTab.add(vehiculesScrollPane);
 
 		vehiculesTable = new JTable();
-		vehiculesTable.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-					{null, null, null, null, null},
-				},
-				new String[] {
-						"No Vehicule", "Type", "Marque", "Couleur", "Actions"
-				}
-				) {
-			Class[] columnTypes = new Class[] {
-					Integer.class, Integer.class, Integer.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		vehiculesTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		vehiculesTable.getColumnModel().getColumn(0).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(1).setPreferredWidth(68);
-		vehiculesTable.getColumnModel().getColumn(1).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(2).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(3).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(3).setMinWidth(20);
-		vehiculesTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-		vehiculesTable.getColumnModel().getColumn(4).setMinWidth(20);
-		vehiculesTable.setBounds(47, 109, 466, 251);
+		AppPagesController.loadVehiculesTable(vehiculesTable);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 
 		JLabel vehiculesLbl = new JLabel("Vehicules");
@@ -280,13 +193,12 @@ public class UserPages extends JFrame {
 		vehiculesTab.add(separatorVehicules);
 
 
-
 		/*
 		 * card 4 (utilisateurs)
 		 * 
 		 * */
 
-		JPanel usersTab = new JPanel();
+		final JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
 		usersTab.setBackground(new Color(112,146,190));
@@ -316,6 +228,10 @@ public class UserPages extends JFrame {
 		JButton deconnexionBtn = new JButton("Se deconnecter");
 		deconnexionBtn.setBounds(77, 127, 253, 58);
 		panelCentreUsers.add(deconnexionBtn);
+		
+		
+		
+		
 
 		/**
 		 * 

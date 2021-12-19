@@ -59,17 +59,14 @@ public class SuperuserPages extends JFrame {
 		 * Les elements des cartes
 		 * */
 
-		JLayeredPane pnlCards = new JLayeredPane();
+		final JLayeredPane pnlCards = new JLayeredPane();
 		pnlCards.setBounds(222, 79, 579, 399);
 		getContentPane().add(pnlCards);
 		pnlCards.setLayout(null);
 
+		//card 1 (tableau de bord)
 
-		/*
-		 * card 1 (tableau de bord)
-		 * 
-		 */
-		JPanel dashTab = new JPanel();
+		final JPanel dashTab = new JPanel();
 		dashTab.setBounds(0, 0, 579, 399);
 		dashTab.setBackground(new Color(112,146,190));
 		pnlCards.add(dashTab);
@@ -111,16 +108,14 @@ public class SuperuserPages extends JFrame {
 		separatorDash.setBounds(23, 28, 139, 14);
 		dashTab.add(separatorDash);
 
-		/*
-		 * card 2 (clients)
-		 * 		
-		 */
-		JPanel clientsTab = new JPanel();
+		//card 2 (clients)
+		final JPanel clientsTab = new JPanel();
 		clientsTab.setVisible(false);
 		clientsTab.setBounds(0, 0, 579, 399);
 		clientsTab.setBackground(new Color(112,146,190));
 		pnlCards.add(clientsTab);
 		clientsTab.setLayout(null);
+
 
 		JLabel clientsLbl = new JLabel("Clients");
 		clientsLbl.setBounds(22, 0, 101, 32);
@@ -168,11 +163,8 @@ public class SuperuserPages extends JFrame {
 		clientsAjouterBtn.setBounds(492, 48, 75, 26);
 		clientsTab.add(clientsAjouterBtn);
 
-		/*
-		 * card 3 (vehicules)
-		 * 
-		 * */
-		JPanel vehiculesTab = new JPanel();
+		//card 3 (vehicules)
+		final JPanel vehiculesTab = new JPanel();
 		vehiculesTab.setVisible(false);
 		vehiculesTab.setBounds(0, 0, 579, 399);
 		vehiculesTab.setBackground(new Color(112,146,190));
@@ -187,7 +179,6 @@ public class SuperuserPages extends JFrame {
 		AppPagesController.loadVehiculesTable(vehiculesTable);
 		vehiculesScrollPane.setViewportView(vehiculesTable);
 
-
 		JLabel vehiculesLbl = new JLabel("Vehicules");
 		vehiculesLbl.setFont(new Font("Dialog", Font.BOLD, 15));
 		vehiculesLbl.setBounds(23, -12, 171, 49);
@@ -196,17 +187,14 @@ public class SuperuserPages extends JFrame {
 		JSeparator separatorVehicules = new JSeparator();
 		separatorVehicules.setBounds(23, 28, 139, 14);
 		vehiculesTab.add(separatorVehicules);
-		JPanel usersTab = new JPanel();
+
+		//card 4 (utilisateurs)
+		final JPanel usersTab = new JPanel();
 		usersTab.setVisible(false);
 		usersTab.setBounds(0, 0, 579, 399);
 		usersTab.setBackground(new Color(112,146,190));
 		pnlCards.add(usersTab);
 		usersTab.setLayout(null);
-		
-		/*
-		 * card 4 (utilisateurs)
-		 * 
-		 * */
 
 		//Changement du nom de la page pour Utilisateurs
 		JLabel usersLbl = new JLabel("Utilisateurs");
@@ -231,14 +219,11 @@ public class SuperuserPages extends JFrame {
 		JButton deconnexionBtn = new JButton("Se deconnecter");
 		deconnexionBtn.setBounds(77, 127, 253, 58);
 		panelCentreUsers.add(deconnexionBtn);
-		
-		/*
-		 * card 5 (gestion)
-		 * 
-		 */
-		JPanel gestionTab = new JPanel();
-		gestionTab.setVisible(false);
-		
+
+		//card 5 (gestion)
+		final JPanel gestionTab = new JPanel();
+		gestionTab.setVisible(true);
+
 		gestionTab.setBounds(0, 0, 579, 399);
 		gestionTab.setBackground(new Color(112,146,190));
 		pnlCards.add(gestionTab);
