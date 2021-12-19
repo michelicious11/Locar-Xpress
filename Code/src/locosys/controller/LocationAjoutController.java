@@ -7,14 +7,15 @@ import java.sql.Statement;
 
 import javax.swing.JTable;
 
+import locosys.models.ContratLocation;
 import locosys.models.Employe;
 import net.proteanit.sql.DbUtils;
 
-public class EmployeAjoutController {
+public class LocationAjoutController {
 	private static String url = "jdbc:sqlite:locosys.db";
 
-	public static int getNbrEmploye() {
-		String query = "SELECT *  FROM Employe";
+	public static int getNbrLocation() {
+		String query = "SELECT *  FROM Contrat";
 
 		try(Connection conn = DriverManager.getConnection(url)) {
 			int counter = 0; 
@@ -30,17 +31,20 @@ public class EmployeAjoutController {
 		return 0;
 	}
 	
-	public static void ajouterEmployeTable(Employe emp, JTable tableEmp) {
-		String query = "INSERT INTO Employe ('prenom', 'nom', 'telephone', 'courriel') "
-						+ "VALUES ('" + emp.getPrenom() + "', '" + emp.getNom() 
-						+ "', '" + emp.getTelephone() + "', '" + emp.getCourriel() + "');";
-		String query2 = "SELECT * FROM Employe";
+	public static void ajouterLocationTable(ContratLocation c, JTable tableContrat) {
+		String query = "INSERT INTO Contrat ('idClient', 'idVehicule', 'dateDeDepart', 'dateDeRetour', "
+				+ "		'assurance', 'forfaitUsure', 'paiementCredit') VALUES "
+						+ "('" + c.getClientID() + "' , '" + c.getVehiculeID() + "' , '" + c.getDateHeureDepart()
+						+ "' , '" + c.getDateHeureRetour() + "' , '" + c.isAssurances()
+						+ "' , '" + c.isUsureJournalier() + "' , '" + c.isPaiementCredit() + "');";
+		System.out.println(query);
+		String query2 = "SELECT * FROM Contrat";
 			
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
 			int rv = stmt.executeUpdate(query);
 			ResultSet rs = stmt.executeQuery(query2);
-			tableEmp.setModel(DbUtils.resultSetToTableModel(rs));
+			tableContrat.setModel(DbUtils.resultSetToTableModel(rs));
 		}catch(Exception e){
 			e.printStackTrace();
 		}

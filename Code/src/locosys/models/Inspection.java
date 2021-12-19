@@ -5,7 +5,7 @@ import locosys.vehicules.Vehicules;
 
 public class Inspection {
 	private ContratLocation contrat; 
-	private Vehicules vehicule; 
+	private int vehiculeID; 
 	private LocalDateTime dateInspection; 
 	private double essenceLitres, montantAccident;
 
@@ -13,7 +13,7 @@ public class Inspection {
  
 	public Inspection(ContratLocation contrat, double montantAccident, LocalDateTime dateInspection, Employe employe) {
 		this.contrat = contrat;
-		this.vehicule = contrat.getVehicule(); 
+		this.vehiculeID = contrat.getVehiculeID(); 
 		this.montantAccident = montantAccident;
 		this.dateInspection = dateInspection; 
 		this.contrat = contrat; 
@@ -28,12 +28,12 @@ public class Inspection {
 		this.contrat = contrat;
 	}
 
-	public Vehicules getVehicule() {
-		return vehicule;
+	public int getVehicule() {
+		return vehiculeID;
 	}
 
-	public void setVehicule(Vehicules vehicule) {
-		this.vehicule = vehicule;
+	public void setVehicule(int vehiculeID) {
+		this.vehiculeID = vehiculeID;
 	}
 
 	public LocalDateTime getDateInspection() {

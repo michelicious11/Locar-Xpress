@@ -1,12 +1,14 @@
 package locosys.models;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Facture {
 	private Inspection inspection;
 	private ContratLocation contrat; 
-	private Client client;
-	private LocalDateTime dateHeureDepart, dateHeureRetour;
+	private int clientID;
+	Date dateHeureDepart;
+	private Date dateHeureRetour;
 	private boolean isUsureJournalier, isPaiementCredit;
 	private double montantBase; 
 	private int duree; 
@@ -20,7 +22,7 @@ public class Facture {
 	public Facture(Inspection inspection) {
 		this.inspection = inspection;
 		this.contrat = inspection.getContrat(); 
-		this.client = inspection.getContrat().getClient();
+		this.clientID = inspection.getContrat().getClientID();
 		this.dateHeureDepart = inspection.getContrat().getDateHeureDepart(); 
 		this.dateHeureRetour = inspection.getContrat().getDateHeureRetour();
 		this.isUsureJournalier = inspection.getContrat().isUsureJournalier();
