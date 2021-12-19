@@ -30,6 +30,12 @@ public class ContratLocation {
 	}
 	
 
+	public ContratLocation(int int1, int int2, int int3, java.sql.Date date, java.sql.Date date2, int int4, int int5,
+			int int6) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getContratID() {
 		return contratID;
 	}
