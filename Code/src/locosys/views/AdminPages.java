@@ -205,8 +205,15 @@ public class AdminPages extends JFrame {
 		panelCentreGestion.setBackground(new Color(1, 50, 62));
 		gestionTab.add(panelCentreGestion);
 		panelCentreGestion.setLayout(null);
-
+		
 		JButton modalitesLocationGestionBtn = new JButton("Modalites de location");
+        modalitesLocationGestionBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ModalitesLocationGestionPage modalitesPage = ModalitesLocationGestionPage.getInstance();
+                modalitesPage.getModalitesLocationGestionPage().setVisible(true); 
+            }
+        });
 		modalitesLocationGestionBtn.setBounds(100, 23, 205, 50);
 		panelCentreGestion.add(modalitesLocationGestionBtn);
 
