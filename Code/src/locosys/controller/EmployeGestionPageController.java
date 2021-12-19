@@ -12,23 +12,32 @@ public class EmployeGestionPageController {
 
 
 	//methode pour avoir le type d'utilisateur (1 pour user, 2 pour superuser et 3 pour admin)
-	public static String getPrixContrat(String nomDeLaTable, String nomAttribut, int idRecherchee) {
+	public static String [] getPrixContrat(String nomDeLaTable, String nomAttribut) {
+		String [] temp = new String [5];
+		int compteur = 0;
 		try {
 			String query = "SELECT " + nomAttribut + ", idTypeVehicule"
-					     + " FROM " + nomDeLaTable 
-					     + " WHERE " + "idTypeVehicule" + " = " +  idRecherchee;
+					     + " FROM " + nomDeLaTable;
 
 			try(Connection conn = DriverManager.getConnection(url)) {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
-				System.out.println(rs.getString(idRecherchee));
-				return rs.getString(idRecherchee);
-			} catch (Exception e){
+				temp[compteur++] = rs.getString(compteur);
+				if (!rs.next() ) {
+				    System.out.println("Aucune donnée");
+				} else {
+					while (rs.next()) {
+				    	temp[compteur++] = rs.getString(nomAttribut);
+				    	System.out.println(rs.getString(nomAttribut));
+					}
+				}
+				return temp;
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		return "Erreur";
+		return null;
 	}
 }
