@@ -3,7 +3,6 @@ package locosys.views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import locosys.controller.EmployeAjoutController;
 import locosys.models.Employe;
@@ -13,9 +12,9 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.JToggleButton;
 
 public class EmployeAjout extends JFrame {
-
 
 	private JTextField nomField;
 	private JTextField telephoneField;
@@ -31,7 +30,6 @@ public class EmployeAjout extends JFrame {
 	private JFrame employeAjout;
 	
 	public JFrame getEmployeAjout() {
-		new EmployeAjout().setVisible(true);
 		return employeAjout;
 	}
 
@@ -40,7 +38,7 @@ public class EmployeAjout extends JFrame {
 	}
 	
 	public EmployeAjout(JTable tableEmp) {
-		this.tableEmp = tableEmp; 
+		initialize();
 	}
 	
 	//create an object of SingleObject
@@ -48,52 +46,43 @@ public class EmployeAjout extends JFrame {
 
 	//Get the only object available
 	public static EmployeAjout getInstance(JTable tableEmp){
+		EmployeAjout.tableEmp = tableEmp; 
 		return instance;
 	}
 	
-	/**
-	 * Create the application.
-	 */
-	public EmployeAjout() {
-		initialize();
-	}
-	
-
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		employeAjout = this; 
 		employeAjout = new JFrame();
-		employeAjout.setBounds(100, 100, 344, 300);
+		employeAjout.setBounds(100, 100, 354, 310);
 		employeAjout.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		employeAjout.setLocationRelativeTo(null);
-		employeAjout.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 491, 364);
 		panel.setBackground(new Color(112,146,190));;
-		employeAjout.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		nomField = new JTextField();
-		nomField.setBounds(160, 76, 86, 20);
+		nomField.setBounds(160, 76, 108, 20);
 		panel.add(nomField);
 		nomField.setColumns(10);
 		
 		telephoneField = new JTextField();
 		telephoneField.setColumns(10);
-		telephoneField.setBounds(160, 107, 86, 20);
+		telephoneField.setBounds(160, 107, 108, 20);
 		panel.add(telephoneField);
 		
 		prenomField = new JTextField();
 		prenomField.setColumns(10);
-		prenomField.setBounds(160, 45, 86, 20);
+		prenomField.setBounds(160, 45, 108, 20);
 		panel.add(prenomField);
 		
 		courrielField = new JTextField();
 		courrielField.setColumns(10);
-		courrielField.setBounds(160, 138, 86, 20);
+		courrielField.setBounds(160, 138, 108, 20);
 		panel.add(courrielField);
 		
 		JLabel prenomLbl = new JLabel("Prenom :");
@@ -115,6 +104,7 @@ public class EmployeAjout extends JFrame {
 		courrielLbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		courrielLbl.setBounds(22, 141, 68, 14);
 		panel.add(courrielLbl);
+
 		
 		JButton ajouterBtn = new JButton("Ajouter");
 		ajouterBtn.addMouseListener(new MouseAdapter() {
@@ -124,12 +114,17 @@ public class EmployeAjout extends JFrame {
 				nom = nomField.getText();
 				telephone = telephoneField.getText();
 				courriel = courrielField.getText();
-				
 				Employe emp = new Employe(EmployeAjoutController.getNbrEmploye(), prenom, nom, telephone, courriel); 
-				
+				EmployeAjoutController.ajouterEmployeTable(emp, tableEmp);
 			}
 		});
-		ajouterBtn.setBounds(116, 199, 130, 34);
+		employeAjout.getContentPane().setLayout(null);
+		ajouterBtn.setBounds(138, 197, 130, 34);
 		panel.add(ajouterBtn);
+		employeAjout.getContentPane().add(panel);
+		
+		JToggleButton toggleButton = new JToggleButton("New toggle button");
+		toggleButton.setBounds(245, 254, 121, 23);
+		employeAjout.getContentPane().add(toggleButton);
 	}
 }

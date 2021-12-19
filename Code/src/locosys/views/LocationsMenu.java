@@ -1,5 +1,7 @@
 package locosys.views;
 
+package locosys.views;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
@@ -14,16 +16,16 @@ import locosys.controller.AppPagesController;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 
-public class EmployeGestionPage extends JFrame {
+public class LocationsMenu extends JFrame {
 
-	private JFrame employeGestionPage;
+	private JFrame LocationsMenu;
 
-	public JFrame getEmployeGestionPage() {
-		return employeGestionPage;
+	public JFrame getLocationsMenu() {
+		return LocationsMenu;
 	}
 
-	public void setEmployeGestionPage(JFrame employeGestionPage) {
-		this.employeGestionPage = employeGestionPage;
+	public void setLocationsMenu(JFrame LocationsMenu) {
+		this.LocationsMenu = LocationsMenu;
 	}
 
 	private JButton addEmployeeBtn;
@@ -32,17 +34,17 @@ public class EmployeGestionPage extends JFrame {
 	private JTable employeTable;
 
 	//create an object of SingleObject
-	private static EmployeGestionPage instance = new EmployeGestionPage();
+	private static LocationsMenu instance = new LocationsMenu();
 
 	//Get the only object available
-	public static EmployeGestionPage getInstance(){
+	public static LocationsMenu getInstance(){
 		return instance;
 	}
 
 	/**
 	 * Create the application.
 	 */
-	public EmployeGestionPage() {
+	public LocationsMenu() {
 		initialize();
 	}
 
@@ -50,17 +52,17 @@ public class EmployeGestionPage extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		employeGestionPage = this; 
-		employeGestionPage = new JFrame();
-		employeGestionPage.setBounds(100, 100, 630, 495);
-		employeGestionPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		employeGestionPage.setLocationRelativeTo(null);
-		employeGestionPage.getContentPane().setLayout(null);
+		LocationsMenu = this; 
+		LocationsMenu = new JFrame();
+		LocationsMenu.setBounds(100, 100, 630, 495);
+		LocationsMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		LocationsMenu.setLocationRelativeTo(null);
+		LocationsMenu.getContentPane().setLayout(null);
 
 		JPanel panelEmploye = new JPanel();
 		panelEmploye.setBackground(new Color(112,146,190));
 		panelEmploye.setBounds(0, 0, 616, 458);
-		employeGestionPage.getContentPane().add(panelEmploye);
+		LocationsMenu.getContentPane().add(panelEmploye);
 		panelEmploye.setLayout(null);
 
 		employeLbl = new JLabel("Employes");
@@ -99,3 +101,4 @@ public class EmployeGestionPage extends JFrame {
 		panelEmploye.add(editEmployeeBtn);
 	}
 }
+

@@ -14,19 +14,8 @@ public class ConnectionBD {
 	private String fileName;
 	private String commands; 
 	private static String url = "jdbc:sqlite:";
-
-//	static String url2 = "..\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
-
-	
-	//relative path pour que ca fonctionne sur la plupart des ordis (a voir si on peut faire mieux)
-//	private static String url2 = ".\\..\\..\\Documents\\locar-xpress\\resources\\database\\sqlBrowserLocarXpress.sql";
+	private static String url2 = "../Locar-Xpress/resources/database/sqlBrowserLocarXpress.sql";
 	private static String url3 = ".\\..\\..\\Documents\\locar-xpress\\";
-
-	static String url2 = "../Locar-Xpress/resources/database/sqlBrowserLocarXpress.sql";
-
-
-	//private static Connection conn;
-	//private static Statement stmt; 
 
 	public static String getUrl3() {
 		return url3;
@@ -60,18 +49,12 @@ public class ConnectionBD {
 		
 		String filePath = new File("").getAbsolutePath();
 		System.out.println (filePath);
-
-		//http://stackoverflow.com/questions/2788080/reading-a-text-file-in-java    
-		//http://stackoverflow.com/questions/19874066/how-to-read-text-file-relative-path
-		//BufferedReader reader = new BufferedReader(new FileReader(filePath + "/src/DBTextFiles/Administrator.txt"));
-		
 		
 		String commands;
 		String commandsFinal= ""; 
 		try {
 			BufferedReader br = new BufferedReader(
 					new FileReader(url2));
-
 
 			while((commands = br.readLine()) != null) {
 				commandsFinal += commands;

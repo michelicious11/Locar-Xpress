@@ -97,6 +97,11 @@ public class AdminPages extends JFrame {
 		dashTab.add(separatorDash);
 		
 		JButton btnMenuLocations = new JButton("Menu locations");
+		btnMenuLocations.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		btnMenuLocations.setBounds(340, 28, 213, 35);
 		dashTab.add(btnMenuLocations);
 		
@@ -126,6 +131,11 @@ public class AdminPages extends JFrame {
 		clientsTab.add(separatorClients);
 
 		JButton clientsMenuBtn = new JButton("Menu clients");
+		clientsMenuBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		clientsMenuBtn.setBounds(349, 31, 213, 35);
 		
 		//card 3 (vehicules)
@@ -155,6 +165,11 @@ public class AdminPages extends JFrame {
 		vehiculesTab.add(separatorVehicules);
 		
 		JButton btnMenuVehicules = new JButton("Menu vehicules");
+		btnMenuVehicules.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		btnMenuVehicules.setBounds(340, 26, 213, 35);
 		vehiculesTab.add(btnMenuVehicules);
 

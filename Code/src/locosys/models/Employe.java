@@ -13,6 +13,12 @@ public class Employe {
 		this.telephone = telephone;
 		this.courriel = adresse; 
 	}
+	
+	
+	public String toString()
+	{
+		return this.employeID + " " + this.prenom + " " + this.nom;
+	}
 
 	public int getEmployeID() {
 		return employeID;
