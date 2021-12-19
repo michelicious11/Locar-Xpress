@@ -116,6 +116,7 @@ public class EmployeAjout extends JFrame {
 				courriel = courrielField.getText();
 				Employe emp = new Employe(EmployeAjoutController.getNbrEmploye(), prenom, nom, telephone, courriel); 
 				EmployeAjoutController.ajouterEmployeTable(emp, tableEmp);
+				employeAjout.dispose();
 			}
 		});
 		employeAjout.getContentPane().setLayout(null);

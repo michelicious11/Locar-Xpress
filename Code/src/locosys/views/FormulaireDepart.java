@@ -5,13 +5,10 @@
 package locosys.views;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -53,12 +50,12 @@ public class FormulaireDepart extends JFrame {
 		typeVoitureButtGr = new javax.swing.ButtonGroup();
 		buttonGroup1 = new javax.swing.ButtonGroup();
 		buttonGroup2 = new javax.swing.ButtonGroup();
-		
+
 		jPanel = new javax.swing.JPanel();
 		jPanel.setBackground(SystemColor.activeCaption);
-		
+
 		jLabel1 = new javax.swing.JLabel();
-		jLabel1.setBounds(10, 34, 258, 39);
+		jLabel1.setBounds(10, 34, 352, 63);
 		telLbl = new javax.swing.JLabel();
 		telLbl.setBounds(10, 108, 78, 34);
 		prenomLbl = new javax.swing.JLabel();
@@ -252,7 +249,7 @@ public class FormulaireDepart extends JFrame {
 
 		buttonGroup2.add(type1Radio);
 		type1Radio.setText("1");
-		
+
 		JComboBox typeVehiculeComboBox = new JComboBox();
 		typeVehiculeComboBox.setBounds(184, 251, 155, 34);
 		typeVehiculeComboBox.addItem("Economique");
@@ -260,7 +257,7 @@ public class FormulaireDepart extends JFrame {
 		typeVehiculeComboBox.addItem("Confort");
 		typeVehiculeComboBox.addItem("Luxe");
 		typeVehiculeComboBox.addItem("Utilitaire");
-		
+
 		jPanel.setLayout(null);
 		jPanel.add(jLabel1);
 		jPanel.add(telLbl);
@@ -288,19 +285,19 @@ public class FormulaireDepart extends JFrame {
 		jPanel.add(assuranceLbl);
 		jPanel.add(assurancesOuiRadio);
 		jPanel.add(assurancesNonRadio);
-		
+
 		rechercherBtn = new JButton("Rechercher");
 		rechercherBtn.setBounds(349, 108, 110, 39);
 		jPanel.add(rechercherBtn);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(jPanel, GroupLayout.PREFERRED_SIZE, 489, GroupLayout.PREFERRED_SIZE)
-		);
+				);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(jPanel, GroupLayout.PREFERRED_SIZE, 673, GroupLayout.PREFERRED_SIZE)
-		);
+				);
 		getContentPane().setLayout(groupLayout);
 
 		pack();

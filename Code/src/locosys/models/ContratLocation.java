@@ -1,24 +1,27 @@
 package locosys.models;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import locosys.vehicules.Vehicules; 
 
 public class ContratLocation {
 	private int contratID; 
-	private Client client; 
-	private Vehicules vehicule;
-	private LocalDateTime dateHeureDepart, dateHeureRetour;
+	private int clientID; 
+	private int vehiculeID;
+	private Date dateHeureDepart;
+	private Date dateHeureRetour;
 	private boolean assurances, usureJournalier, paiementCredit;
 	private int duree;
 	private double montantBase; 
 
 	
-	public ContratLocation(int contratID, Client client, Vehicules vehicule, 
-							LocalDateTime dateHeureDepart, LocalDateTime dateHeureRetour,
+	public ContratLocation(int contratID, int clientID, int vehiculeID, 
+							Date dateHeureDepart, Date dateHeureRetour,
 							boolean assurances, boolean usureJournalier, boolean paiementCredit) {
 		this.contratID = contratID;
-		this.client = client; 
-		this.vehicule = vehicule; 
+		this.clientID = clientID; 
+		this.vehiculeID = vehiculeID; 
 		this.dateHeureDepart = dateHeureDepart; 
 		this.dateHeureRetour = dateHeureRetour; 
 		this.assurances = assurances;
@@ -35,35 +38,35 @@ public class ContratLocation {
 		this.contratID = contratID;
 	}
 
-	public Client getClient() {
-		return client;
+	public int getClientID() {
+		return clientID;
 	}
 
-	public void setClient(Client clientID) {
-		this.client = client;
+	public void setClient(int clientID) {
+		this.clientID = clientID;
 	}
 
-	public Vehicules getVehicule() {
-		return vehicule;
+	public int getVehiculeID() {
+		return vehiculeID;
 	}
 
-	public void setVehicule(Vehicules vehiculeID) {
-		this.vehicule = vehicule;
+	public void setVehiculeID(int vehiculeID) {
+		this.vehiculeID = vehiculeID;
 	}
 
-	public LocalDateTime getDateHeureDepart() {
+	public Date getDateHeureDepart() {
 		return dateHeureDepart;
 	}
 
-	public void setDateHeureDepart(LocalDateTime dateHeureDepart) {
+	public void setDateHeureDepart(Date dateHeureDepart) {
 		this.dateHeureDepart = dateHeureDepart;
 	}
 
-	public LocalDateTime getDateHeureRetour() {
+	public Date getDateHeureRetour() {
 		return dateHeureRetour;
 	}
 
-	public void setDateHeureRetour(LocalDateTime dateHeureRetour) {
+	public void setDateHeureRetour(Date dateHeureRetour) {
 		this.dateHeureRetour = dateHeureRetour;
 	}
 

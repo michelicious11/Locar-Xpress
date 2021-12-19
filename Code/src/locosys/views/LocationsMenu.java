@@ -82,8 +82,8 @@ public class LocationsMenu extends JFrame {
 		addLocationBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				EmployeAjout employeAjout = EmployeAjout.getInstance(locationsTable);
-				employeAjout.getEmployeAjout().setVisible(true);		
+				LocationAjout locationAjout = LocationAjout.getInstance(locationsTable);
+				locationAjout.getLocationAjout().setVisible(true);		
 			}
 		});
 		addLocationBtn.setBounds(145, 392, 147, 41);
