@@ -23,7 +23,6 @@ public class EmployeEditController {
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			System.out.println(rs);
 			while(rs.next()) {
 				employe = new Employe(Integer.parseInt(rs.getString("idEmploye")), rs.getString("prenom"), 
 						rs.getString("nom"), rs.getString("telephone"), rs.getString("courriel"));
