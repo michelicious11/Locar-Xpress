@@ -292,8 +292,8 @@ public class AdminPages extends JFrame {
 		retourBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Retour form");
-			}
+				FormulaireRetour formulaireRetour = FormulaireRetour.getInstance();
+				formulaireRetour.getFormulaireRetour();			}
 		});
 		retourBtn.setForeground(new Color(240, 248, 255));
 		retourBtn.setBackground(new Color(6,62,125));
