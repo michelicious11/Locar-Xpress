@@ -263,8 +263,8 @@ public class AdminPages extends JFrame {
 		reservationBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Reservation form");
-			}
+				FormulaireDepart formulaireDepart = FormulaireDepart.getInstance();
+				formulaireDepart.getFormulaireDepart();			}
 		});
 		reservationBtn.setForeground(new Color(240, 248, 255));
 		reservationBtn.setBackground(new Color(6,62,125));
@@ -275,13 +275,6 @@ public class AdminPages extends JFrame {
 		
 		reservationBtn.setBounds(31, 24, 115, 44);
 		topBar.add(reservationBtn);
-		reservationBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				FormulaireDepart formulaireDepart = FormulaireDepart.getInstance();
-				formulaireDepart.getFormulaireDepart();
-			}
-		});
 		
 		JButton cueilletteBtn = new JButton("Cueillette");
 		cueilletteBtn.addMouseListener(new MouseAdapter() {

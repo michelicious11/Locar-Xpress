@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import locosys.views.AdminPages;
 import locosys.views.SuperuserPages;
@@ -22,7 +23,8 @@ import locosys.views.UserPages;
 	
 
 public class AppLoginController {
-	private static String [] users = new String[99]; 
+	private static String msgErreur = "La combinaison du nom d'utilisateur et du mot de passe est incorrecte. \n"
+								+ "Veuillez essayer de nouveau ou contacter votre administrateur.";
 	private static String url = "jdbc:sqlite:locosys.db";
 
 	//methode pour verifier si le nom utilisateur et le mot de passe match avec l'information de la base de donnees
@@ -111,6 +113,8 @@ public class AppLoginController {
 			adminPages.setVisible(true);
 			frame.dispose(); 
 			break; 
+			default:
+				JOptionPane.showMessageDialog(null,  msgErreur, "Alerte", JOptionPane.ERROR_MESSAGE);				break; 
 		}
 	}
 	
