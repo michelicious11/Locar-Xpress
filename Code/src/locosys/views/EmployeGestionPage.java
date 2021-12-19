@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import locosys.controller.AppPagesController;
 import javax.swing.JScrollPane;
+import java.awt.Font;
 
 public class EmployeGestionPage extends JFrame {
 
@@ -62,29 +63,8 @@ public class EmployeGestionPage extends JFrame {
 		employeGestionPage.getContentPane().add(panelEmploye);
 		panelEmploye.setLayout(null);
 
-		addEmployeeBtn = new JButton("Ajouter");
-		addEmployeeBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				EmployeAjout employeAjout = EmployeAjout.getInstance();
-				employeAjout.getEmployeAjout();	
-			}
-		});
-		addEmployeeBtn.setBounds(145, 392, 147, 41);
-		panelEmploye.add(addEmployeeBtn);
-
-		editEmployeeBtn = new JButton("Modifier");
-		addEmployeeBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				EmployeEdit employeEdit = EmployeEdit.getInstance();
-				employeEdit.getEmployeAjout();	
-			}
-		});
-		editEmployeeBtn.setBounds(320, 392, 147, 41);
-		panelEmploye.add(editEmployeeBtn);
-
 		employeLbl = new JLabel("Employes");
+		employeLbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		employeLbl.setBounds(67, 10, 135, 32);
 		panelEmploye.add(employeLbl);
 
@@ -95,5 +75,27 @@ public class EmployeGestionPage extends JFrame {
 		employeTable = new JTable();
 		AppPagesController.loadEmployeeTable(employeTable);
 		employeScrollPane.setViewportView(employeTable);
+		
+		addEmployeeBtn = new JButton("Ajouter");
+		addEmployeeBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EmployeAjout employeAjout = EmployeAjout.getInstance(employeTable);
+				employeAjout.getEmployeAjout();		
+			}
+		});
+		addEmployeeBtn.setBounds(145, 392, 147, 41);
+		panelEmploye.add(addEmployeeBtn);
+
+		editEmployeeBtn = new JButton("Modifier");
+		addEmployeeBtn.addMouseListener(new MouseAdapter() {
+	//		@Override
+	//		public void mouseClicked(MouseEvent e) {
+	//			EmployeEdit employeEdit = EmployeEdit.getInstance();
+	//			employeEdit.getEmployeAjout();	
+	//		}
+		});
+		editEmployeeBtn.setBounds(320, 392, 147, 41);
+		panelEmploye.add(editEmployeeBtn);
 	}
 }

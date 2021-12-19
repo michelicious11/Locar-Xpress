@@ -6,10 +6,7 @@ package locosys.views;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author filip
- */
+
 public class FormulaireRetour extends javax.swing.JFrame {
 
     /**
