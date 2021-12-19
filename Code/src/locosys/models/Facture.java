@@ -23,8 +23,8 @@ public class Facture {
 		this.client = inspection.getContrat().getClient();
 		this.dateHeureDepart = inspection.getContrat().getDateHeureDepart(); 
 		this.dateHeureRetour = inspection.getContrat().getDateHeureRetour();
-		this.isUsureJournalier = inspection.getContrat().isUsureJournalier();
-		this.isPaiementCredit = inspection.getContrat().isPaiementCredit();
+		this.isUsureJournalier = inspection.getContrat().getIsUsureJournalier();
+		this.isPaiementCredit = inspection.getContrat().getIsPaiementCredit();
 		this.duree = inspection.getContrat().getDuree(); 
 		this.montantBase = inspection.getContrat().getMontantBase(); 	
 	}

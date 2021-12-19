@@ -44,7 +44,7 @@ public class AppLoginController {
 	public static int getTypeUtilisateur(String nomUtilisateurInput, String motDePasseInput) {
 
 		if(authentification(nomUtilisateurInput, motDePasseInput)) {
-			String query = "SELECT idTypeUtilisateur FROM Utilisateur WHERE nomUtilisateur = '" +  nomUtilisateurInput + "'";
+			String query = "SELECT idTypeUtilisateur FROM Utilisateur WHERE nomUtilisateur = " +  nomUtilisateurInput;
 
 			try(Connection conn = DriverManager.getConnection(url)) {
 				Statement stmt = conn.createStatement();

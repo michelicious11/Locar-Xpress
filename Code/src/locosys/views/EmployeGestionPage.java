@@ -27,6 +27,7 @@ public class EmployeGestionPage extends JFrame {
 	private JButton editEmployeeBtn;
 	private JLabel employeLbl;
 	private JTable employeTable;
+	
 
 	   //create an object of SingleObject
 	   private static EmployeGestionPage instance = new EmployeGestionPage();
