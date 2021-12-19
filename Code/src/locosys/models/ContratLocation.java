@@ -1,5 +1,9 @@
 package locosys.models;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import locosys.vehicules.Vehicules; 
 
@@ -11,6 +15,9 @@ public class ContratLocation {
 	private boolean assurances, usureJournalier, paiementCredit;
 	private int duree;
 	private double montantBase; 
+	
+	private static String [] users = new String[99]; 
+	private static String url = "jdbc:sqlite:locosys.db";
 
 	
 	public ContratLocation(int contratID, Client client, Vehicules vehicule, 
@@ -25,6 +32,33 @@ public class ContratLocation {
 		this.usureJournalier = usureJournalier;
 		this.paiementCredit = paiementCredit; 		
 	}
+	
+	
+    public static void ajouterContratLocation(ContratLocation c) {
+    	
+		String query = "INSERT INTO Contrat(contratID, client, vehicule,"
+				+ "dateHeureDepart, dateHeureRetour,"
+				+ "assurances, usureJournalier, paiementCredit) "
+				+ "VALUES ('" + c.getContratID() + " , " + c.getClient() + " , " + c.getVehicule() + " , " 
+							+ c.getDateHeureDepart() + " , " + c.getDateHeureRetour() + " , "
+							+ c.getAssurances() + " , " + c.getIsUsureJournalier() + " , "
+							+ c.getIsPaiementCredit() + "')"; 
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+    }
+	
+	
+	
+	
+	
+	
+	
 	
 
 	public int getContratID() {
@@ -67,7 +101,7 @@ public class ContratLocation {
 		this.dateHeureRetour = dateHeureRetour;
 	}
 
-	public boolean isAssurances() {
+	public boolean getAssurances() {
 		return assurances;
 	}
 
@@ -75,7 +109,7 @@ public class ContratLocation {
 		this.assurances = assurances;
 	}
 
-	public boolean isUsureJournalier() {
+	public boolean getIsUsureJournalier() {
 		return usureJournalier;
 	}
 
@@ -83,7 +117,7 @@ public class ContratLocation {
 		this.usureJournalier = usureJournalier;
 	}
 
-	public boolean isPaiementCredit() {
+	public boolean getIsPaiementCredit() {
 		return paiementCredit;
 	}
 
