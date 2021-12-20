@@ -94,7 +94,7 @@ public class LocationsMenu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				LocationEdit locationEdit = LocationEdit.getInstance(locationsTable);
-				locationEdit.getEmployeEdit().setVisible(true);	
+				locationEdit.getLocationEdit().setVisible(true);	
 			}
 		});
 		editLocationBtn.setBounds(320, 392, 147, 41);

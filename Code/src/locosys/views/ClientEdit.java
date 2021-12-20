@@ -28,7 +28,7 @@ public class ClientEdit extends JFrame {
 	private String nom;
 	private String telephone;
 	private String courriel;
-	private static JTable tableEmp;
+	private static JTable tableClient;
 	private static Employe emp; 
 	
 	private JFrame employeEdit;
@@ -46,12 +46,12 @@ public class ClientEdit extends JFrame {
 	}
 	
 	//create an object of SingleObject
-	private static LocationEdit instance = new LocationEdit(tableEmp);
+	private static ClientEdit instance = new ClientEdit(tableClient);
 
 
 	//Get the only object available
-	public static LocationEdit getInstance(JTable tableEmp){
-		LocationEdit.tableEmp = tableEmp; 
+	public static ClientEdit getInstance(JTable tableEmp){
+		ClientEdit.tableClient = tableEmp; 
 		return instance;
 	}
 	
@@ -116,7 +116,7 @@ public class ClientEdit extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				noEmploye = Integer.parseInt(employeIDField.getText()); 
-				EmployeEditController.modifierEmployeTable(emp, tableEmp);
+				EmployeEditController.modifierEmployeTable(emp, tableClient);
 			}
 		});
 		employeEdit.getContentPane().setLayout(null);
@@ -134,7 +134,7 @@ public class ClientEdit extends JFrame {
 				telephone = telephoneField.getText();
 				courriel = courrielField.getText();
 				emp = new Employe(noEmploye, prenom, nom, telephone, courriel);
-				EmployeEditController.supprimerEmployeTable(emp, tableEmp);
+				EmployeEditController.supprimerEmployeTable(emp, tableClient);
 			}
 		});
 		supprimerBtn.setBounds(290, 32, 97, 22);

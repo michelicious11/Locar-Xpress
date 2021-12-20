@@ -94,7 +94,7 @@ public class VehiculeMenu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VehiculeEdit vehiculeEdit = VehiculeEdit.getInstance(vehiculeTable);
-				vehiculeEdit.getClientEdit().setVisible(true);	
+				vehiculeEdit.getVehiculeEdit().setVisible(true);	
 			}
 		});
 		editVehiculeBtn.setBounds(320, 392, 147, 41);

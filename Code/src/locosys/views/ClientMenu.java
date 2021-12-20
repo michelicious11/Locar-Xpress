@@ -94,7 +94,7 @@ public class ClientMenu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ClientEdit clientEdit = ClientEdit.getInstance(clientTable);
-				clientEdit.getClientEdit().setVisible(true);	
+				clientEdit.getEmployeEdit().setVisible(true);	
 			}
 		});
 		editClienBtn.setBounds(320, 392, 147, 41);
