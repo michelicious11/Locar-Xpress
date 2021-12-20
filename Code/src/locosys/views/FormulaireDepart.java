@@ -52,7 +52,7 @@ public class FormulaireDepart extends JFrame {
 		buttonGroup2 = new javax.swing.ButtonGroup();
 
 		jPanel = new javax.swing.JPanel();
-		jPanel.setBackground(SystemColor.activeCaption);
+		jPanel.setBackground(new Color(112,146,190));
 
 		jLabel1 = new javax.swing.JLabel();
 		jLabel1.setBounds(10, 34, 352, 63);
@@ -67,12 +67,12 @@ public class FormulaireDepart extends JFrame {
 		nomLbl = new javax.swing.JLabel();
 		nomLbl.setBounds(10, 206, 78, 34);
 		assurancesNonRadio = new javax.swing.JRadioButton();
-		assurancesNonRadio.setBackground(SystemColor.activeCaption);
+		assurancesNonRadio.setBackground(new Color(112,146,190));
 		assurancesNonRadio.setBounds(247, 535, 65, 34);
 		paiementLbl = new javax.swing.JLabel();
 		paiementLbl.setBounds(8, 452, 129, 34);
 		assurancesOuiRadio = new javax.swing.JRadioButton();
-		assurancesOuiRadio.setBackground(SystemColor.activeCaption);
+		assurancesOuiRadio.setBackground(new Color(112,146,190));
 		assurancesOuiRadio.setBounds(180, 535, 65, 34);
 		typeVehiculeLbl = new javax.swing.JLabel();
 		typeVehiculeLbl.setBounds(10, 251, 129, 34);
@@ -93,24 +93,24 @@ public class FormulaireDepart extends JFrame {
 		assuranceLbl = new javax.swing.JLabel();
 		assuranceLbl.setBounds(8, 525, 129, 34);
 		paiementEspecesRadio = new javax.swing.JRadioButton();
-		paiementEspecesRadio.setBackground(SystemColor.activeCaption);
+		paiementEspecesRadio.setBackground(new Color(112,146,190));
 		paiementEspecesRadio.setBounds(182, 462, 81, 39);
 		paiementCreditRadio = new javax.swing.JRadioButton();
-		paiementCreditRadio.setBackground(SystemColor.activeCaption);
+		paiementCreditRadio.setBackground(new Color(112,146,190));
 		paiementCreditRadio.setBounds(265, 462, 72, 39);
 		paiementDebitRadio = new javax.swing.JRadioButton();
-		paiementDebitRadio.setBackground(SystemColor.activeCaption);
+		paiementDebitRadio.setBackground(new Color(112,146,190));
 		paiementDebitRadio.setBounds(336, 462, 72, 39);
 		permisLbl = new javax.swing.JLabel();
 		permisLbl.setBounds(10, 303, 129, 34);
 		type2Radio = new javax.swing.JRadioButton();
-		type2Radio.setBackground(SystemColor.activeCaption);
+		type2Radio.setBackground(new Color(112,146,190));
 		type2Radio.setBounds(241, 292, 47, 39);
 		type12Radio = new javax.swing.JRadioButton();
-		type12Radio.setBackground(SystemColor.activeCaption);
+		type12Radio.setBackground(new Color(112,146,190));
 		type12Radio.setBounds(290, 292, 72, 39);
 		type1Radio = new javax.swing.JRadioButton();
-		type1Radio.setBackground(SystemColor.activeCaption);
+		type1Radio.setBackground(new Color(112,146,190));
 		type1Radio.setBounds(184, 292, 55, 39);
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -183,9 +183,9 @@ public class FormulaireDepart extends JFrame {
 		dateRetourDateChooser.setBackground(new java.awt.Color(245, 245, 245));
 		dateRetourDateChooser.setPreferredSize(new java.awt.Dimension(97, 48));
 
-		annulerBtn.setBackground(new java.awt.Color(153, 153, 153));
-		annulerBtn.setFont(new Font("Dialog", Font.PLAIN, 18)); // NOI18N
-		annulerBtn.setForeground(SystemColor.activeCaptionText);
+		annulerBtn.setBackground(SystemColor.activeCaptionBorder);
+		annulerBtn.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+		annulerBtn.setForeground(new Color(0, 0, 0));
 		annulerBtn.setText("Annuler");
 		annulerBtn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {

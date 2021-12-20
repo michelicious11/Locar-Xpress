@@ -15,7 +15,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class EmployeEdit extends JFrame {
+public class LocationEdit extends JFrame {
 
 	private JTextField nomField;
 	private JTextField telephoneField;
@@ -28,30 +28,30 @@ public class EmployeEdit extends JFrame {
 	private String nom;
 	private String telephone;
 	private String courriel;
-	private static JTable tableEmp;
+	private static JTable tableCLi;
 	private static Employe emp; 
 	
 	private JFrame employeEdit;
 	
-	public JFrame getEmployeEdit() {
+	public JFrame getLocationEdit() {
 		return employeEdit;
 	}
 
-	public void setEmployeEdit(JFrame employeEdit) {
+	public void setLocationEdit(JFrame locationEdit) {
 		this.employeEdit = employeEdit;
 	}
 	
-	public EmployeEdit(JTable tableEmp) {
+	public LocationEdit(JTable tableEmp) {
 		initialize();
 	}
 	
 	//create an object of SingleObject
-	private static EmployeEdit instance = new EmployeEdit(tableEmp);
+	private static LocationEdit instance = new LocationEdit(tableCLi);
 
 
 	//Get the only object available
-	public static EmployeEdit getInstance(JTable tableEmp){
-		EmployeEdit.tableEmp = tableEmp; 
+	public static LocationEdit getInstance(JTable tableEmp){
+		LocationEdit.tableCLi = tableEmp; 
 		return instance;
 	}
 	
@@ -116,7 +116,7 @@ public class EmployeEdit extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				noEmploye = Integer.parseInt(employeIDField.getText()); 
-				EmployeEditController.modifierEmployeTable(emp, tableEmp);
+				EmployeEditController.modifierEmployeTable(emp, tableCLi);
 			}
 		});
 		employeEdit.getContentPane().setLayout(null);
@@ -134,7 +134,7 @@ public class EmployeEdit extends JFrame {
 				telephone = telephoneField.getText();
 				courriel = courrielField.getText();
 				emp = new Employe(noEmploye, prenom, nom, telephone, courriel);
-				EmployeEditController.supprimerEmployeTable(emp, tableEmp);
+				EmployeEditController.supprimerEmployeTable(emp, tableCLi);
 			}
 		});
 		supprimerBtn.setBounds(290, 32, 97, 22);
