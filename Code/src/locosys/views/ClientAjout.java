@@ -2,52 +2,65 @@ package locosys.views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
 import locosys.controller.ClientAjoutController;
-import locosys.controller.EmployeAjoutController;
+import locosys.controller.ClientAjoutController;
+import locosys.models.Client;
 import locosys.models.Employe;
+import locosys.models.Permis;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
 import java.awt.Font;
 import javax.swing.JToggleButton;
 
-public class EmployeAjout extends JFrame {
+import com.toedter.calendar.JCalendar;
+
+public class ClientAjout extends JFrame {
 
 	private JTextField nomField;
 	private JTextField telephoneField;
 	private JTextField prenomField;
-	private JTextField courrielField;
-
+	private JCalendar dateNaissance;
+	private JTextField adresseField;
+	private JRadioButton permisBtn;
+	
+	
 	private String prenom;
 	private String nom;
 	private String telephone;
-	private String courriel;
-	private static JTable tableEmp; 
+	private String adresse;
+	private Permis permis;
+	private LocalDateTime dateNaiss;
+	private static JTable tableCli; 
 	
-	private JFrame employeAjout;
+	private JFrame clientAjout;
 	
-	public JFrame getEmployeAjout() {
-		return employeAjout;
+	public JFrame getClientAjout() {
+		return clientAjout;
 	}
 
-	public void setEmployeAjout(JFrame employeAjout) {
-		this.employeAjout = employeAjout;
+	public void setClientAjout(JFrame clientAjout) {
+		this.clientAjout = clientAjout;
 	}
 	
-	public EmployeAjout(JTable tableEmp) {
+	public ClientAjout(JTable tableCli) {
 		initialize();
 	}
 	
 	//create an object of SingleObject
-	private static EmployeAjout instance = new EmployeAjout(tableEmp);
+	private static ClientAjout instance = new ClientAjout(tableCli);
 
 	//Get the only object available
-	public static EmployeAjout getInstance(JTable tableEmp){
-		EmployeAjout.tableEmp = tableEmp; 
+	public static ClientAjout getInstance(JTable tableCli){
+		ClientAjout.tableCli = tableCli; 
 		return instance;
 	}
 	
@@ -55,11 +68,11 @@ public class EmployeAjout extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		employeAjout = this; 
-		employeAjout = new JFrame();
-		employeAjout.setBounds(100, 100, 354, 310);
-		employeAjout.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		employeAjout.setLocationRelativeTo(null);
+		clientAjout = this; 
+		clientAjout = new JFrame();
+		clientAjout.setBounds(100, 100, 354, 310);
+//		clientAjout.setDefaultCloseOperatioNaissancen(JFrame.DISPOSE_ON_CLOSE);
+		clientAjout.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 491, 364);
@@ -81,10 +94,10 @@ public class EmployeAjout extends JFrame {
 		prenomField.setBounds(160, 45, 108, 20);
 		panel.add(prenomField);
 		
-		courrielField = new JTextField();
-		courrielField.setColumns(10);
-		courrielField.setBounds(160, 138, 108, 20);
-		panel.add(courrielField);
+//		courrielField = new JTextField();
+//		courrielField.setColumns(10);
+//		courrielField.setBounds(160, 138, 108, 20);
+//		panel.add(courrielField);
 		
 		JLabel prenomLbl = new JLabel("Prenom :");
 		prenomLbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -114,19 +127,21 @@ public class EmployeAjout extends JFrame {
 				prenom = prenomField.getText();
 				nom = nomField.getText();
 				telephone = telephoneField.getText();
-				courriel = courrielField.getText();
-				Employe emp = new Employe(ClientAjoutController.getNbrClient(), prenom, nom, telephone, courriel); 
-				EmployeAjoutController.ajouterEmployeTable(emp, tableEmp);
-				employeAjout.dispose();
+				adresse = adresseField.getText();
+//				permis = permisBtn.get
+//				dateNaiss = dateNaissance.getDate();
+				Client cli = new Client(ClientAjoutController.getNbrClient(), prenom, nom, dateNaiss, telephone, adresse, permis); 
+				ClientAjoutController.ajouterClientTable(cli, tableCli);
+				clientAjout.dispose();
 			}
 		});
-		employeAjout.getContentPane().setLayout(null);
+		clientAjout.getContentPane().setLayout(null);
 		ajouterBtn.setBounds(138, 197, 130, 34);
 		panel.add(ajouterBtn);
-		employeAjout.getContentPane().add(panel);
+		clientAjout.getContentPane().add(panel);
 		
 		JToggleButton toggleButton = new JToggleButton("New toggle button");
 		toggleButton.setBounds(245, 254, 121, 23);
-		employeAjout.getContentPane().add(toggleButton);
+		clientAjout.getContentPane().add(toggleButton);
 	}
 }

@@ -80,8 +80,8 @@ public class EmployeGestionPage extends JFrame {
 		addEmployeeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				EmployeAjout employeAjout = EmployeAjout.getInstance(employeTable);
-				employeAjout.getEmployeAjout().setVisible(true);		
+				ClientAjout employeAjout = ClientAjout.getInstance(employeTable);
+				employeAjout.getClientAjout().setVisible(true);		
 			}
 		});
 		addEmployeeBtn.setBounds(145, 392, 147, 41);
@@ -91,7 +91,7 @@ public class EmployeGestionPage extends JFrame {
 		editEmployeeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				EmployeEdit employeEdit = EmployeEdit.getInstance(employeTable);
+				LocationEdit employeEdit = LocationEdit.getInstance(employeTable);
 				employeEdit.getEmployeEdit().setVisible(true);	
 			}
 		});
