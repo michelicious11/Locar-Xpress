@@ -17,8 +17,8 @@ import net.proteanit.sql.DbUtils;
 public class FormulaireDepartController {
 	private static String url = "jdbc:sqlite:locosys.db";
 
-	public static ContratLocation trouveLocation(String telephone) {
-		String query= "SELECT * FROM Contrat WHERE ID = " + telephone + ";";; 
+	public static ContratLocation trouverContact(String telephone) {
+		String query= "SELECT * FROM Client WHERE telephone = '" + telephone + "';";; 
 		ContratLocation contrat = null;
 		
 		try(Connection conn = DriverManager.getConnection(url)) {
@@ -29,6 +29,7 @@ public class FormulaireDepartController {
 				contrat = new ContratLocation(rs.getInt("contratID"),  rs.getInt("clientID"), rs.getInt("vehiculeID"), 
 						rs.getDate("dateHeureDepart"), rs.getDate("dateHeureRetour"),
 						rs.getInt("assurances"), rs.getInt("usureJournalier"),rs.getInt("paiementCredit"));
+				System.out.println(rs.getInt("contratID") + " " + rs.getDate("dateHeureDepart"));
 			}
 			return contrat;
 		}catch(Exception e){

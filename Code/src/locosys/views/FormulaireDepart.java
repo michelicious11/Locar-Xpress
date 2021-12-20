@@ -8,10 +8,23 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
+
+import locosys.controller.ContratLocationController;
+import locosys.controller.EmployeAjoutController;
+import locosys.controller.FormulaireDepartController;
+import locosys.models.Client;
+import locosys.models.ContratLocation;
+import locosys.models.Employe;
+
 import javax.swing.GroupLayout;
 import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
 
 public class FormulaireDepart extends JFrame {
@@ -49,8 +62,8 @@ public class FormulaireDepart extends JFrame {
 		assurancesButtGr = new javax.swing.ButtonGroup();
 		typeVoitureButtGr = new javax.swing.ButtonGroup();
 		buttonGroup1 = new javax.swing.ButtonGroup();
-		buttonGroup2 = new javax.swing.ButtonGroup();
-
+		buttonGroupPermis = new javax.swing.ButtonGroup();
+		buttonGroupUsure = new javax.swing.ButtonGroup();
 		jPanel = new javax.swing.JPanel();
 		jPanel.setBackground(new Color(112,146,190));
 
@@ -67,13 +80,13 @@ public class FormulaireDepart extends JFrame {
 		nomLbl = new javax.swing.JLabel();
 		nomLbl.setBounds(10, 206, 78, 34);
 		assurancesNonRadio = new javax.swing.JRadioButton();
-		assurancesNonRadio.setBackground(new Color(112,146,190));
-		assurancesNonRadio.setBounds(247, 535, 65, 34);
-		paiementLbl = new javax.swing.JLabel();
-		paiementLbl.setBounds(8, 452, 129, 34);
-		assurancesOuiRadio = new javax.swing.JRadioButton();
+
 		assurancesOuiRadio.setBackground(new Color(112,146,190));
 		assurancesOuiRadio.setBounds(180, 535, 65, 34);
+
+		assurancesOuiRadio.setBackground(SystemColor.activeCaption);
+		assurancesOuiRadio.setBounds(184, 554, 65, 34);
+
 		typeVehiculeLbl = new javax.swing.JLabel();
 		typeVehiculeLbl.setBounds(10, 251, 129, 34);
 		DateDepartLbl = new javax.swing.JLabel();
@@ -91,7 +104,7 @@ public class FormulaireDepart extends JFrame {
 		prenomField = new javax.swing.JTextField();
 		prenomField.setBounds(184, 154, 155, 34);
 		assuranceLbl = new javax.swing.JLabel();
-		assuranceLbl.setBounds(8, 525, 129, 34);
+		assuranceLbl.setBounds(10, 550, 129, 34);
 		paiementEspecesRadio = new javax.swing.JRadioButton();
 		paiementEspecesRadio.setBackground(new Color(112,146,190));
 		paiementEspecesRadio.setBounds(182, 462, 81, 39);
@@ -158,7 +171,7 @@ public class FormulaireDepart extends JFrame {
 		});
 
 		paiementLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
-		paiementLbl.setText("Paiement ");
+		paiementLbl.setText("Paiement :");
 
 		assurancesButtGr.add(assurancesOuiRadio);
 		assurancesOuiRadio.setText("Oui");
@@ -212,7 +225,7 @@ public class FormulaireDepart extends JFrame {
 		});
 
 		assuranceLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
-		assuranceLbl.setText("Assurances");
+		assuranceLbl.setText("Assurances :");
 
 		buttonGroup1.add(paiementEspecesRadio);
 		paiementEspecesRadio.setText("Especes");
@@ -241,13 +254,13 @@ public class FormulaireDepart extends JFrame {
 		permisLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
 		permisLbl.setText("Permis");
 
-		buttonGroup2.add(type2Radio);
+		buttonGroupPermis.add(type2Radio);
 		type2Radio.setText("2");
 
-		buttonGroup2.add(type12Radio);
+		buttonGroupPermis.add(type12Radio);
 		type12Radio.setText("1 & 2");
 
-		buttonGroup2.add(type1Radio);
+		buttonGroupPermis.add(type1Radio);
 		type1Radio.setText("1");
 
 		JComboBox typeVehiculeComboBox = new JComboBox();
@@ -287,6 +300,16 @@ public class FormulaireDepart extends JFrame {
 		jPanel.add(assurancesNonRadio);
 
 		rechercherBtn = new JButton("Rechercher");
+		rechercherBtn.addMouseListener(new MouseAdapter() {
+			String telephone = telephoneField.getText();
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ContratLocation contrat =(FormulaireDepartController.trouverContact(telephone));
+				//Client client = new Client(); 
+				//prenomField.setText(client.getPrenom());
+				//nomField.setText(client.getNom());
+			}
+		});
 		rechercherBtn.setBounds(349, 108, 110, 39);
 		jPanel.add(rechercherBtn);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -298,6 +321,26 @@ public class FormulaireDepart extends JFrame {
 				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(jPanel, GroupLayout.PREFERRED_SIZE, 673, GroupLayout.PREFERRED_SIZE)
 				);
+		
+		usureForfaitLbl = new JLabel();
+		usureForfaitLbl.setText("Forfait usure : ");
+		usureForfaitLbl.setFont(new Font("Dialog", Font.PLAIN, 20));
+		usureForfaitLbl.setBounds(10, 505, 129, 34);
+		jPanel.add(usureForfaitLbl);
+		
+		usure1Radio = new JRadioButton();
+		buttonGroupUsure.add(usure1Radio);
+		usure1Radio.setText("1");
+		usure1Radio.setBackground(SystemColor.activeCaption);
+		usure1Radio.setBounds(184, 504, 65, 34);
+		jPanel.add(usure1Radio);
+		
+		usure2Radio = new JRadioButton();
+		buttonGroupUsure.add(usure2Radio);
+		usure2Radio.setText("2");
+		usure2Radio.setBackground(SystemColor.activeCaption);
+		usure2Radio.setBounds(265, 504, 65, 34);
+		jPanel.add(usure2Radio);
 		getContentPane().setLayout(groupLayout);
 
 		pack();
@@ -347,7 +390,8 @@ public class FormulaireDepart extends JFrame {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.ButtonGroup assurancesButtGr;
 	private javax.swing.ButtonGroup buttonGroup1;
-	private javax.swing.ButtonGroup buttonGroup2;
+	private javax.swing.ButtonGroup buttonGroupPermis;
+	private javax.swing.ButtonGroup buttonGroupUsure;
 	private javax.swing.JButton enregistreBtn;
 	private javax.swing.JButton annulerBtn;
 	private com.toedter.calendar.JDateChooser dateDepartDateChooser;
@@ -376,4 +420,7 @@ public class FormulaireDepart extends JFrame {
 	private javax.swing.JTextField prenomField;
 	private javax.swing.ButtonGroup typeVoitureButtGr;
 	private JButton rechercherBtn;
+	private JLabel usureForfaitLbl;
+	private JRadioButton usure1Radio;
+	private JRadioButton usure2Radio;
 }
