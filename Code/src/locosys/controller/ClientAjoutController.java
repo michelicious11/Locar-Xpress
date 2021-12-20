@@ -30,13 +30,34 @@ public class ClientAjoutController {
 		}
 		return 0;
 	}
-	
+
+	public static Client getClient(String telephone) {
+
+		String query = "SELECT * FROM Client WHERE telephone = '" +  telephone + "'";
+		Client client = null; 
+
+		try(Connection conn = DriverManager.getConnection(url)) {
+			Statement stmt = conn.createStatement();
+			int rv = stmt.executeUpdate(query);
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				client = new Client(rs.getInt("idClient"),  rs.getString("prenom"), rs.getString("nom"), 
+							rs.getDate("dateDeNaissance"), rs.getString("telephone"), rs.getString("courriel"), rs.getInt("idPermis"));
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return client;
+	}
+
 	public static void ajouterClientTable(Client cli, JTable tableCli) {
 		String query = "INSERT INTO Employe ('prenom', 'nom', 'telephone', 'courriel') "
-						+ "VALUES ('" + cli.getPrenom() + "', '" + cli.getNom() 
-						+ "', '" + cli.getTelephone() + "', '"  + "');";
+				+ "VALUES ('" + cli.getPrenom() + "', '" + cli.getNom() 
+				+ "', '" + cli.getTelephone() + "', '"  + "');";
 		String query2 = "SELECT * FROM Client";
-			
+
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
 			int rv = stmt.executeUpdate(query);

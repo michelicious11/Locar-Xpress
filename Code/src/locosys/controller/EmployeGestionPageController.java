@@ -35,7 +35,6 @@ public class EmployeGestionPageController {
 		try(Connection conn = DriverManager.getConnection(url)) {
 			Statement stmt = conn.createStatement();
 			int rv = stmt.executeUpdate(query);
-			System.out.println( "1st executeUpdate() returned " + rv );
 		}catch(Exception e){
 			e.printStackTrace();
 		}

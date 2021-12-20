@@ -1,16 +1,17 @@
 package locosys.models;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Client {
 	private int clientID, typePermis; 
 	private String prenom, nom, telephone, adresse;
-	private LocalDateTime dateNaissance;
+	private Date dateNaissance;
 
 	
-	public Client(int clientID, String prenom, String nom, LocalDateTime dateNaissance, String telephone,
-					String adresse, Permis permis) {
-		this.typePermis = permis.getTypePermis();
+	public Client(int clientID, String prenom, String nom, Date dateNaissance, String telephone,
+					String adresse, int permis) {
+		this.typePermis = permis;
 		this.prenom = prenom; 
 		this.nom = nom; 
 		this.telephone = telephone;
@@ -69,11 +70,11 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public LocalDateTime getDateNaissance() {
+	public Date getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(LocalDateTime dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

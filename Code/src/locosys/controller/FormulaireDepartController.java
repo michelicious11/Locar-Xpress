@@ -19,6 +19,7 @@ public class FormulaireDepartController {
 
 	public static ContratLocation trouverContact(String telephone) {
 		String query= "SELECT * FROM Client WHERE telephone = '" + telephone + "';";; 
+		System.out.println(query);
 		ContratLocation contrat = null;
 		
 		try(Connection conn = DriverManager.getConnection(url)) {
@@ -29,7 +30,6 @@ public class FormulaireDepartController {
 				contrat = new ContratLocation(rs.getInt("contratID"),  rs.getInt("clientID"), rs.getInt("vehiculeID"), 
 						rs.getDate("dateHeureDepart"), rs.getDate("dateHeureRetour"),
 						rs.getInt("assurances"), rs.getInt("usureJournalier"),rs.getInt("paiementCredit"));
-				System.out.println(rs.getInt("contratID") + " " + rs.getDate("dateHeureDepart"));
 			}
 			return contrat;
 		}catch(Exception e){

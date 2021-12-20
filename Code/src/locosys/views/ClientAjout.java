@@ -130,8 +130,8 @@ public class ClientAjout extends JFrame {
 				adresse = adresseField.getText();
 //				permis = permisBtn.get
 //				dateNaiss = dateNaissance.getDate();
-				Client cli = new Client(ClientAjoutController.getNbrClient(), prenom, nom, dateNaiss, telephone, adresse, permis); 
-				ClientAjoutController.ajouterClientTable(cli, tableCli);
+//				Client cli = new Client(ClientAjoutController.getNbrClient(), prenom, nom, dateNaiss, telephone, adresse, permis); 
+//				ClientAjoutController.ajouterClientTable(cli, tableCli);
 				clientAjout.dispose();
 			}
 		});

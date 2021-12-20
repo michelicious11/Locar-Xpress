@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 
+import locosys.controller.ClientAjoutController;
 import locosys.controller.ContratLocationController;
 import locosys.controller.EmployeAjoutController;
 import locosys.controller.FormulaireDepartController;
@@ -103,7 +104,7 @@ public class FormulaireDepart extends JFrame {
 		paiementEspecesRadio.setBackground(new Color(112,146,190));
 		paiementEspecesRadio.setBounds(182, 462, 81, 39);
 		paiementCreditRadio = new javax.swing.JRadioButton();
-		paiementCreditRadio.setBackground(new Color(112,146,190));
+		paiementCreditRadio.setBackground(new Color(112, 146, 190));
 		paiementCreditRadio.setBounds(265, 462, 72, 39);
 		paiementDebitRadio = new javax.swing.JRadioButton();
 		paiementDebitRadio.setBackground(new Color(112,146,190));
@@ -277,13 +278,14 @@ public class FormulaireDepart extends JFrame {
 
 		rechercherBtn = new JButton("Rechercher");
 		rechercherBtn.addMouseListener(new MouseAdapter() {
-			String telephone = telephoneField.getText();
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ContratLocation contrat =(FormulaireDepartController.trouverContact(telephone));
-				//Client client = new Client(); 
-				//prenomField.setText(client.getPrenom());
-				//nomField.setText(client.getNom());
+				String telephone = telephoneField.getText();
+				System.out.println(telephone);
+				Client client = ClientAjoutController.getClient(telephone);
+				//Client client = ClientAjoutController.getClient(contrat.getClientID()); 
+				prenomField.setText(client.getPrenom());
+				nomField.setText(client.getNom());
 			}
 		});
 		rechercherBtn.setBounds(349, 108, 110, 39);
@@ -307,28 +309,28 @@ public class FormulaireDepart extends JFrame {
 		usure1Radio = new JRadioButton();
 		buttonGroupUsure.add(usure1Radio);
 		usure1Radio.setText("1");
-		usure1Radio.setBackground(SystemColor.activeCaption);
+		usure1Radio.setBackground(new Color(112, 146, 190));
 		usure1Radio.setBounds(184, 504, 65, 34);
 		jPanel.add(usure1Radio);
 		
 		usure2Radio = new JRadioButton();
 		buttonGroupUsure.add(usure2Radio);
 		usure2Radio.setText("2");
-		usure2Radio.setBackground(SystemColor.activeCaption);
+		usure2Radio.setBackground(new Color(112, 146, 190));
 		usure2Radio.setBounds(265, 504, 65, 34);
 		jPanel.add(usure2Radio);
 		
 		usure1Radio_1 = new JRadioButton();
 		assurancesButtGr.add(usure1Radio_1);
 		usure1Radio_1.setText("1");
-		usure1Radio_1.setBackground(SystemColor.activeCaption);
+		usure1Radio_1.setBackground(new Color(112, 146, 190));
 		usure1Radio_1.setBounds(184, 550, 65, 34);
 		jPanel.add(usure1Radio_1);
 		
 		usure2Radio_1 = new JRadioButton();
 		assurancesButtGr.add(usure2Radio_1);
 		usure2Radio_1.setText("2");
-		usure2Radio_1.setBackground(SystemColor.activeCaption);
+		usure2Radio_1.setBackground(new Color(112, 146, 190));
 		usure2Radio_1.setBounds(265, 550, 65, 34);
 		jPanel.add(usure2Radio_1);
 		getContentPane().setLayout(groupLayout);
