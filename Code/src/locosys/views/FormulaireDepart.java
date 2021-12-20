@@ -79,14 +79,8 @@ public class FormulaireDepart extends JFrame {
 		nomField.setBounds(184, 206, 155, 34);
 		nomLbl = new javax.swing.JLabel();
 		nomLbl.setBounds(10, 206, 78, 34);
-		assurancesNonRadio = new javax.swing.JRadioButton();
-		assurancesNonRadio.setBackground(SystemColor.activeCaption);
-		assurancesNonRadio.setBounds(265, 554, 65, 34);
 		paiementLbl = new javax.swing.JLabel();
 		paiementLbl.setBounds(10, 460, 129, 34);
-		assurancesOuiRadio = new javax.swing.JRadioButton();
-		assurancesOuiRadio.setBackground(SystemColor.activeCaption);
-		assurancesOuiRadio.setBounds(184, 554, 65, 34);
 		typeVehiculeLbl = new javax.swing.JLabel();
 		typeVehiculeLbl.setBounds(10, 251, 129, 34);
 		DateDepartLbl = new javax.swing.JLabel();
@@ -162,24 +156,8 @@ public class FormulaireDepart extends JFrame {
 		nomLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
 		nomLbl.setText("Nom");
 
-		assurancesButtGr.add(assurancesNonRadio);
-		assurancesNonRadio.setText("Non");
-		assurancesNonRadio.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jRadioButton1ActionPerformed(evt);
-			}
-		});
-
 		paiementLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
 		paiementLbl.setText("Paiement :");
-
-		assurancesButtGr.add(assurancesOuiRadio);
-		assurancesOuiRadio.setText("Oui");
-		assurancesOuiRadio.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jRadioButton2ActionPerformed(evt);
-			}
-		});
 
 		typeVehiculeLbl.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
 		typeVehiculeLbl.setText("Type vehicule");
@@ -296,8 +274,6 @@ public class FormulaireDepart extends JFrame {
 		jPanel.add(enregistreBtn);
 		jPanel.add(annulerBtn);
 		jPanel.add(assuranceLbl);
-		jPanel.add(assurancesOuiRadio);
-		jPanel.add(assurancesNonRadio);
 
 		rechercherBtn = new JButton("Rechercher");
 		rechercherBtn.addMouseListener(new MouseAdapter() {
@@ -341,18 +317,24 @@ public class FormulaireDepart extends JFrame {
 		usure2Radio.setBackground(SystemColor.activeCaption);
 		usure2Radio.setBounds(265, 504, 65, 34);
 		jPanel.add(usure2Radio);
+		
+		usure1Radio_1 = new JRadioButton();
+		assurancesButtGr.add(usure1Radio_1);
+		usure1Radio_1.setText("1");
+		usure1Radio_1.setBackground(SystemColor.activeCaption);
+		usure1Radio_1.setBounds(184, 550, 65, 34);
+		jPanel.add(usure1Radio_1);
+		
+		usure2Radio_1 = new JRadioButton();
+		assurancesButtGr.add(usure2Radio_1);
+		usure2Radio_1.setText("2");
+		usure2Radio_1.setBackground(SystemColor.activeCaption);
+		usure2Radio_1.setBounds(265, 550, 65, 34);
+		jPanel.add(usure2Radio_1);
 		getContentPane().setLayout(groupLayout);
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
-
-	private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_jRadioButton2ActionPerformed
-
-	private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_jRadioButton1ActionPerformed
 
 	private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
 		// TODO add your handling code here:
@@ -407,12 +389,10 @@ public class FormulaireDepart extends JFrame {
 	private javax.swing.JLabel DateDepartLbl;
 	private javax.swing.JLabel dateRetourLbl;
 	private javax.swing.JPanel jPanel;
-	private javax.swing.JRadioButton assurancesNonRadio;
 	private javax.swing.JRadioButton paiementDebitRadio;
 	private javax.swing.JRadioButton type2Radio;
 	private javax.swing.JRadioButton type12Radio;
 	private javax.swing.JRadioButton type1Radio;
-	private javax.swing.JRadioButton assurancesOuiRadio;
 	private javax.swing.JRadioButton paiementEspecesRadio;
 	private javax.swing.JRadioButton paiementCreditRadio;
 	private javax.swing.JTextField telephoneField;
@@ -423,4 +403,6 @@ public class FormulaireDepart extends JFrame {
 	private JLabel usureForfaitLbl;
 	private JRadioButton usure1Radio;
 	private JRadioButton usure2Radio;
+	private JRadioButton usure1Radio_1;
+	private JRadioButton usure2Radio_1;
 }
